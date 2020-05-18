@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="16dp"
+    tools:context=".UserDataActivity">
+
+    <Button
+        android:id="@+id/changeButton"
+        android:layout_width="210dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="20dp"
+        android:background="#0C0404"
+        android:drawableTop="@android:color/black"
+        android:onClick="changeUserData"
+        android:shadowColor="@android:color/black"
+        android:text="@string/change_user_data"
+        android:textColor="@color/cardview_light_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textComment"
+        tools:ignore="MissingConstraints,PrivateResource" />
+
+    <TextView
+        android:id="@+id/textName"
+        style="@style/shadoweffect"
+        android:layout_width="275dp"
+        android:layout_height="52dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:drawableTop="@android:color/black"
+        android:textColor="@android:color/black"
+        android:textSize="25sp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
+
+    <TextView
+        android:id="@+id/textId"
+        style="@style/shadoweffect"
+        android:layout_width="70dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:drawableTop="@android:color/black"
+        android:textColor="@android:color/black"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="210dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="28dp"
+        android:background="#0C0404"
+        android:drawableTop="@android:color/black"
+        android:onClick="returnToMainPage"
+        android:shadowColor="@android:color/black"
+        android:text="@string/back_button_message"
+        android:textColor="@color/cardview_light_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/changeButton"
+        tools:ignore="MissingConstraints,PrivateResource" />
+
+    <TextView
+        android:id="@+id/textComment"
+        style="@style/shadoweffect"
+        android:layout_width="399dp"
+        android:layout_height="61dp"
+        android:drawableTop="@android:color/black"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.629"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="400dp"
+        android:layout_height="349dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textName"
+        app:srcCompat="@drawable/nhl"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="321dp"
+        android:layout_height="57dp"
+        android:drawableTop="@android:color/black"
+        android:text="@string/player_info"
+        android:textColor="@android:color/black"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

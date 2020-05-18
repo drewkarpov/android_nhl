@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">NHL</string>
+    <string name="download">Подгрузка</string>
+    <string name="nickName">Введите никнейм</string>
+    <string name="comment">Комментарий</string>
+    <string name="low">low</string>
+    <string name="hard">hard</string>
+    <string name="driver">driver</string>
+    <string name="searchButtonText">Поиск</string>
+    <string name="nicknameInput">Введите ник</string>
+    <string name="back_button_message">Вернуться назад</string>
+    <string name="change_user_data">Изменить данные</string>
+    <string name="player_info">Информация об игроке</string>
+    <string name="add">Добавить</string>
+    <string name="back">Назад</string>
+    <string name="delete_user">Удалить игрока</string>
+</resources>
