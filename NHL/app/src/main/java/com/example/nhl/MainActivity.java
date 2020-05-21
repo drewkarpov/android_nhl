@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager manager = new LinearLayoutManager(this);
         recyclerViewUsers.setLayoutManager(manager);
         recyclerViewUsers.setNestedScrollingEnabled(false);
-        if (userList.size() != 0){
+        if (userList.size() != 0) {
             adapter = new UserAdapter(userList);
             recyclerViewUsers.setAdapter(adapter);
         }
@@ -46,10 +46,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void showUsers(View view) {
         String value = textViewSearch.getText().toString();
-        if (value.isEmpty()){
+        if (value.isEmpty()) {
             getUsers();
-        }
-        else {
+        } else {
             searchUsers(value);
         }
     }
@@ -65,7 +64,8 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(@NonNull Call<List<User>> call, @NonNull Response<List<User>> response) {
                         userList = response.body();
                         adapter = new UserAdapter(userList);
-                        adapter.setOnUserClickListener(position -> {});
+                        adapter.setOnUserClickListener(position -> {
+                        });
                         recyclerViewUsers.setAdapter(adapter);
                     }
 
@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
+
     public void searchUsers(String value) {
 
         NetworkService.getInstance()
@@ -84,16 +85,14 @@ public class MainActivity extends AppCompatActivity {
                     @SuppressLint("ResourceAsColor")
                     @Override
                     public void onResponse(@NonNull Call<List<User>> call, @NonNull Response<List<User>> response) {
-                        List<User>  users = response.body();
-                        if (users.size() != 0){
+                        List<User> users = response.body();
+                        if (users.size() != 0) {
                             adapter = new UserAdapter(users);
                             recyclerViewUsers.setAdapter(adapter);
-                            Toast toast = Toast.makeText(getApplicationContext(), "найдено "+users.size()+" пользователей", Toast.LENGTH_LONG);
+                            Toast toast = Toast.makeText(getApplicationContext(), "найдено " + users.size() + " пользователей", Toast.LENGTH_LONG);
                             toast.getView().setBackgroundColor(R.color.colorPrimaryDark);
                             toast.show();
-
-
-                        }else {
+                        } else {
                             Toast toast = Toast.makeText(getApplicationContext(), "пользователи с таким никнеймом не найдены", Toast.LENGTH_LONG);
                             toast.getView().setBackgroundColor(R.color.colorPrimaryDark);
                             toast.show();
@@ -111,6 +110,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AddUserActivity.class);
         startActivity(intent);
     }
-    }
+}
 
 
