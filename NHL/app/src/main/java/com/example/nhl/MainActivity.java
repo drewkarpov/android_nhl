@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerViewUsers;
     private EditText textViewSearch;
     private UserAdapter adapter;
-    private List<User> userList = new ArrayList<>();
+    private static List<User> userList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,10 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager manager = new LinearLayoutManager(this);
         recyclerViewUsers.setLayoutManager(manager);
         recyclerViewUsers.setNestedScrollingEnabled(false);
+        if (userList.size() != 0){
+            adapter = new UserAdapter(userList);
+            recyclerViewUsers.setAdapter(adapter);
+        }
 
     }
 
@@ -43,7 +48,8 @@ public class MainActivity extends AppCompatActivity {
         String value = textViewSearch.getText().toString();
         if (value.isEmpty()){
             getUsers();
-        } else {
+        }
+        else {
             searchUsers(value);
         }
     }
@@ -75,11 +81,23 @@ public class MainActivity extends AppCompatActivity {
                 .getJSONApi()
                 .searchUsers(value)
                 .enqueue(new Callback<List<User>>() {
+                    @SuppressLint("ResourceAsColor")
                     @Override
                     public void onResponse(@NonNull Call<List<User>> call, @NonNull Response<List<User>> response) {
                         List<User>  users = response.body();
-                        adapter = new UserAdapter(users);
-                        recyclerViewUsers.setAdapter(adapter);
+                        if (users.size() != 0){
+                            adapter = new UserAdapter(users);
+                            recyclerViewUsers.setAdapter(adapter);
+                            Toast toast = Toast.makeText(getApplicationContext(), "найдено "+users.size()+" пользователей", Toast.LENGTH_LONG);
+                            toast.getView().setBackgroundColor(R.color.colorPrimaryDark);
+                            toast.show();
+
+
+                        }else {
+                            Toast toast = Toast.makeText(getApplicationContext(), "пользователи с таким никнеймом не найдены", Toast.LENGTH_LONG);
+                            toast.getView().setBackgroundColor(R.color.colorPrimaryDark);
+                            toast.show();
+                        }
                     }
 
                     @Override

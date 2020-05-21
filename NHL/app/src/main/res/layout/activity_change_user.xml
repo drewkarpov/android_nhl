@@ -18,10 +18,12 @@
         android:shadowColor="@android:color/black"
         android:text="@string/change_user_data"
         android:textColor="@color/cardview_light_background"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroupStatus"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints,PrivateResource" />
 
     <Button
@@ -35,28 +37,32 @@
         android:shadowColor="@android:color/black"
         android:text="@string/delete_user"
         android:textColor="@color/cardview_light_background"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/changeButton"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints,PrivateResource" />
 
     <RadioGroup
         android:id="@+id/radioGroupStatus"
-        android:layout_width="325dp"
-        android:layout_height="28dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:orientation="horizontal"
+        android:layout_width="139dp"
+        android:layout_height="138dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textChangeComment">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textChangeComment"
+        app:layout_constraintVertical_bias="0.145">
 
         <RadioButton
             android:id="@+id/radioButtonLow"
-            android:layout_width="93dp"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
             android:background="@android:color/background_light"
             android:buttonTint="@android:color/background_dark"
+            android:gravity="left"
             android:text="@string/low"
             android:textColorHighlight="@android:color/black"
             android:textColorLink="@android:color/background_dark"
@@ -65,11 +71,12 @@
 
         <RadioButton
             android:id="@+id/radioButtonHard"
-            android:layout_width="93dp"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
             android:background="@android:color/background_light"
             android:buttonTint="@android:color/background_dark"
             android:checked="true"
+            android:gravity="left"
             android:text="@string/hard"
             android:textColorHighlight="@android:color/black"
             android:textColorLink="@android:color/background_dark"
@@ -78,10 +85,11 @@
 
         <RadioButton
             android:id="@+id/radioButtonDriver"
-            android:layout_width="87dp"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
             android:background="@android:color/background_light"
             android:buttonTint="@android:color/background_dark"
+            android:gravity="left"
             android:text="@string/driver"
             android:textColorHighlight="@android:color/black"
             android:textColorLink="@android:color/background_dark"
@@ -101,37 +109,42 @@
         android:shadowColor="@android:color/black"
         android:text="@string/back_button_message"
         android:textColor="@color/cardview_light_background"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/deleteButton"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints,PrivateResource" />
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="321dp"
+        android:id="@+id/textViewChangeUserTitle"
+        android:layout_width="0dp"
         android:layout_height="57dp"
-        android:layout_marginTop="160dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
         android:drawableTop="@android:color/black"
         android:text="@string/player_info"
         android:textColor="@android:color/black"
         android:textSize="25sp"
+        android:gravity="center"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.057" />
 
     <EditText
         android:id="@+id/textChangeName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="548dp"
         android:ems="10"
         android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.515"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewChangeUserTitle"
+        app:layout_constraintVertical_bias="0.052" />
 
     <EditText
         android:id="@+id/textChangeComment"
@@ -139,9 +152,10 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.515"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textChangeName" />
+        app:layout_constraintTop_toBottomOf="@+id/textChangeName"
+        app:layout_constraintVertical_bias="0.023" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

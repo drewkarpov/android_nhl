@@ -4,26 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginLeft="0dp"
     android:windowSoftInputMode="adjustNothing"
-    android:layout_marginLeft="16dp"
     tools:context=".MainActivity">
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewUsers"
-        android:layout_width="388dp"
+        android:layout_width="0dp"
         android:layout_height="526dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/button" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="250dp"
         android:layout_height="50dp"
+        android:layout_marginTop="8dp"
         android:background="@android:color/black"
         android:onClick="showUsers"
         android:text="@string/searchButtonText"
@@ -37,33 +37,38 @@
         android:id="@+id/buttonAddNote"
         android:layout_width="79dp"
         android:layout_height="64dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="28dp"
         android:background="#FFFFFF"
         android:clickable="true"
         android:foreground="@android:drawable/ic_menu_add"
         android:onClick="addUser"
         app:backgroundTint="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.951"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.953" />
 
     <EditText
         android:id="@+id/inputNickname"
         android:layout_width="250dp"
         android:layout_height="50dp"
+        android:layout_marginTop="32dp"
         android:ems="10"
         android:hint="@string/nicknameInput"
         android:inputType="textPersonName"
         android:textColorHighlight="@android:color/holo_orange_dark"
         android:textColorLink="@android:color/holo_orange_dark"
         android:textCursorDrawable="@android:color/holo_orange_dark"
+        app:layout_constraintBottom_toBottomOf="@+id/scrollView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ScrollView
+        android:id="@+id/scrollView3"
         android:layout_width="0dp"
         android:layout_height="0dp"
         tools:layout_editor_absoluteX="1dp"

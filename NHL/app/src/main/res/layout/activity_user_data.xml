@@ -4,24 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="16dp"
     tools:context=".UserDataActivity">
 
     <Button
         android:id="@+id/changeButton"
         android:layout_width="210dp"
         android:layout_height="70dp"
-        android:layout_marginTop="20dp"
         android:background="#0C0404"
         android:drawableTop="@android:color/black"
         android:onClick="changeUserData"
         android:shadowColor="@android:color/black"
         android:text="@string/change_user_data"
         android:textColor="@color/cardview_light_background"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textComment"
+        app:layout_constraintVertical_bias="0.068"
         tools:ignore="MissingConstraints,PrivateResource" />
 
     <TextView
@@ -29,14 +29,16 @@
         style="@style/shadoweffect"
         android:layout_width="275dp"
         android:layout_height="52dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:drawableTop="@android:color/black"
         android:textColor="@android:color/black"
         android:textSize="25sp"
         android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitle"
+        app:layout_constraintVertical_bias="0.001" />
 
     <TextView
         android:id="@+id/textId"
@@ -48,8 +50,12 @@
         android:drawableTop="@android:color/black"
         android:textColor="@android:color/black"
         android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textName"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitle"
+        app:layout_constraintVertical_bias="0.001" />
 
     <Button
         android:id="@+id/backButton"
@@ -62,43 +68,57 @@
         android:shadowColor="@android:color/black"
         android:text="@string/back_button_message"
         android:textColor="@color/cardview_light_background"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/changeButton"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints,PrivateResource" />
 
     <TextView
         android:id="@+id/textComment"
         style="@style/shadoweffect"
-        android:layout_width="399dp"
+        android:layout_width="0dp"
         android:layout_height="61dp"
         android:drawableTop="@android:color/black"
-        android:textSize="15sp"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.629"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="400dp"
-        android:layout_height="349dp"
+        android:layout_width="0dp"
+        android:layout_height="295dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textName"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/nhl"
         tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textViewTitle"
-        android:layout_width="321dp"
+        android:layout_width="0dp"
         android:layout_height="57dp"
         android:drawableTop="@android:color/black"
         android:text="@string/player_info"
         android:textColor="@android:color/black"
         android:textSize="25sp"
         android:textStyle="bold"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.911"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.007" />
 </androidx.constraintlayout.widget.ConstraintLayout>
