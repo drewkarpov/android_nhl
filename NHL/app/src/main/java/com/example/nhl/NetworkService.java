@@ -25,4 +25,8 @@ public class NetworkService {
     public JSONUserApi getJSONApi(){
         return mRetrofit.create(JSONUserApi.class);
     }
+
+    public JSONScoreApi getJSONScoreApi(){
+        return  mRetrofit.create(JSONScoreApi.class);
+    }
 }

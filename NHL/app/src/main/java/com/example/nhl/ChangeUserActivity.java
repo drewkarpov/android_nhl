@@ -13,6 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.example.nhl.model.User;
+
 import java.util.List;
 
 import retrofit2.Call;

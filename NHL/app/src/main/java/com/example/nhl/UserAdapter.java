@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.nhl.model.User;
+
 import java.util.List;
 
 import static com.example.nhl.UserDataActivity.EXTRA_POS;

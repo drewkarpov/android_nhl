@@ -1,11 +1,13 @@
 package com.example.nhl;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import com.example.nhl.model.Score;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class UserDataActivity extends AppCompatActivity {
@@ -44,4 +46,11 @@ public class UserDataActivity extends AppCompatActivity {
         intent.putExtra("status", status);
         startActivity(intent);
     }
+
+    public void goGamesPage(View view) {
+        Intent intent = new Intent(this, userGamesActivity.class);
+        intent.putExtra("id", textId.getText());
+        startActivity(intent);
+    }
+
 }

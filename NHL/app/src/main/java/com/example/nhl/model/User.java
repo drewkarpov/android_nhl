@@ -1,4 +1,4 @@
-package com.example.nhl;
+package com.example.nhl.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

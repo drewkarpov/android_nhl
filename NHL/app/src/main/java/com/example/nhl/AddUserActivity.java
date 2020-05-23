@@ -3,6 +3,7 @@ package com.example.nhl;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +11,9 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+
+import com.example.nhl.model.User;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -36,6 +40,7 @@ public class AddUserActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    @SuppressLint("ResourceAsColor")
     public void addUserToBd(View view) {
         int radioButtonId = radioGroupPriority.getCheckedRadioButtonId();
         RadioButton radioButton = findViewById(radioButtonId);
@@ -46,7 +51,9 @@ public class AddUserActivity extends AppCompatActivity {
                 editTextComment.getText().toString()
         );
         postUsers(user);
-        Toast.makeText(getApplicationContext(), "игрок добавлен", Toast.LENGTH_LONG).show();
+        Toast toast = Toast.makeText(getApplicationContext(), "игрок добавлен", Toast.LENGTH_LONG);
+        toast.getView().setBackgroundColor(R.color.colorPrimaryDark);
+        toast.show();
         goToMainPage(view);
     }
 

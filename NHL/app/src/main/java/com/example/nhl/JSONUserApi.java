@@ -1,5 +1,7 @@
 package com.example.nhl;
 
+import com.example.nhl.model.User;
+
 import java.util.List;
 
 import retrofit2.Call;

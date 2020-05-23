@@ -11,7 +11,16 @@
     <string name="back_button_message">Вернуться назад</string>
     <string name="change_user_data">Изменить данные</string>
     <string name="player_info">Изменение данных игрока</string>
-    <string name="add">Добавить</string>
     <string name="back">Назад</string>
     <string name="delete_user">Удалить игрока</string>
+    <string name="game_title">Игры:</string>
+    <string name="watch_games">посмотреть игры</string>
+    <string name="add_game">Добавить игру</string>
+    <string name="return_main_menu">Вернуться на поиск</string>
+    <string name="renew">Обновить</string>
+    <string name="won">Выиграли</string>
+    <string name="lose">Проиграли</string>
+    <string name="wegoal">мы забили</string>
+    <string name="usgoal">нам забили</string>
+    <string name="add">Добавить</string>
 </resources>

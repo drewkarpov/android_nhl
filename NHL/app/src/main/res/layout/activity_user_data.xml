@@ -8,8 +8,8 @@
 
     <Button
         android:id="@+id/changeButton"
-        android:layout_width="210dp"
-        android:layout_height="70dp"
+        android:layout_width="180dp"
+        android:layout_height="35dp"
         android:background="#0C0404"
         android:drawableTop="@android:color/black"
         android:onClick="changeUserData"
@@ -59,9 +59,8 @@
 
     <Button
         android:id="@+id/backButton"
-        android:layout_width="210dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="180dp"
+        android:layout_height="35dp"
         android:background="#0C0404"
         android:drawableTop="@android:color/black"
         android:onClick="returnToMainPage"
@@ -72,8 +71,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/changeButton"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@+id/buttonWatchGames"
+        app:layout_constraintVertical_bias="0.048"
         tools:ignore="MissingConstraints,PrivateResource" />
 
     <TextView
@@ -95,7 +94,7 @@
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="0dp"
-        android:layout_height="295dp"
+        android:layout_height="185dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -121,4 +120,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.007" />
+
+    <Button
+        android:id="@+id/buttonWatchGames"
+        android:layout_width="180dp"
+        android:layout_height="35dp"
+        android:background="#0C0404"
+        android:drawableTop="@android:color/black"
+        android:onClick="goGamesPage"
+        android:shadowColor="@android:color/black"
+        android:text="@string/watch_games"
+        android:textColor="@color/cardview_light_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/changeButton"
+        app:layout_constraintVertical_bias="0.054"
+        tools:ignore="PrivateResource" />
 </androidx.constraintlayout.widget.ConstraintLayout>

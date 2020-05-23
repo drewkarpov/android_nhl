@@ -16,12 +16,14 @@
         android:usesCleartextTraffic="true"
         android:windowSoftInputMode="adjustNothing"
         tools:targetApi="n">
-        <activity android:name=".ChangeUserActivity"></activity>
+        <activity android:name=".AddGameToUserActivity"></activity>
+        <activity android:name=".userGamesActivity" />
+        <activity android:name=".ChangeUserActivity" />
         <activity android:name=".UserDataActivity" />
         <activity android:name=".AddUserActivity" />
-        <activity android:name=".MainActivity"
-            android:windowSoftInputMode="adjustNothing"
-            >
+        <activity
+            android:name=".MainActivity"
+            android:windowSoftInputMode="adjustNothing">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
