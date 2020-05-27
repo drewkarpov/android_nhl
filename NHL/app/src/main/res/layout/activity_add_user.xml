@@ -4,119 +4,131 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="16dp"
+    android:background="@drawable/nhl_sharks"
     tools:context=".AddUserActivity">
 
     <Button
         android:id="@+id/buttonAdd"
-        android:layout_width="210dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="64dp"
+        android:layout_width="180dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="32dp"
         android:background="@android:color/black"
-        android:textColor="@android:color/white"
         android:onClick="addUserToBd"
         android:text="@string/add"
+        android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroupPriority"
         tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/buttonReturn"
-        android:layout_width="210dp"
-        android:layout_height="70dp"
+        android:layout_width="180dp"
+        android:layout_height="35dp"
+        android:background="@android:color/black"
         android:onClick="goToMainPage"
         android:text="@string/back"
-        android:background="@android:color/black"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonAdd"
-        app:layout_constraintVertical_bias="0.196"
+        app:layout_constraintVertical_bias="0.051"
         tools:ignore="MissingConstraints,OnClick" />
 
     <EditText
         android:id="@+id/editTextName"
-        android:layout_width="375dp"
+        android:layout_width="0dp"
         android:layout_height="50dp"
         android:ems="10"
         android:gravity="center_horizontal"
         android:hint="@string/nickName"
         android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="228dp" />
+        android:textColor="@color/cardview_light_background"
+        android:textColorHint="@color/cardview_light_background"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.127"
+        tools:ignore="MissingConstraints,PrivateResource"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/editTextDescription"
-        android:layout_width="384dp"
-        android:layout_height="56dp"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
         android:ems="10"
         android:gravity="center_horizontal"
         android:hint="@string/comment"
         android:inputType="textMultiLine"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        android:textColor="@color/cardview_light_background"
+        android:textColorHint="@color/cardview_light_background"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextName" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextName"
+        app:layout_constraintVertical_bias="0.0"
+        android:autofillHints=""
+        tools:ignore="PrivateResource" />
 
     <RadioGroup
         android:id="@+id/radioGroupPriority"
-        android:layout_width="359dp"
-        android:layout_height="31dp"
-        android:orientation="horizontal"
+        android:layout_width="137dp"
+        android:layout_height="92dp"
+        android:background="@android:color/black"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDescription">
+        app:layout_constraintTop_toBottomOf="@+id/editTextDescription"
+        app:layout_constraintVertical_bias="0.063">
 
         <RadioButton
             android:id="@+id/radioButtonLow"
             android:layout_width="135dp"
-            android:layout_height="wrap_content"
-            android:background="@android:color/background_light"
+            android:layout_height="30dp"
+            android:background="@android:color/black"
+            android:buttonTint="@android:color/background_light"
             android:text="@string/low"
-            android:buttonTint="@android:color/background_dark"
-            android:textColorHighlight="@android:color/black"
-            android:textColorLink="@android:color/background_dark"
+            android:textColor="@color/cardview_light_background"
+            android:textColorHighlight="@android:color/background_light"
+            android:textColorLink="@android:color/background_light"
             android:textCursorDrawable="@android:color/background_dark"
-            tools:targetApi="lollipop" />
+            tools:targetApi="lollipop"
+            tools:ignore="PrivateResource" />
 
         <RadioButton
             android:id="@+id/radioButtonHard"
-            android:layout_width="139dp"
-            android:layout_height="wrap_content"
-            android:background="@android:color/background_light"
-            android:buttonTint="@android:color/background_dark"
+            android:layout_width="135dp"
+            android:layout_height="30dp"
+            android:buttonTint="@android:color/background_light"
             android:checked="true"
             android:text="@string/hard"
-            android:textColorHighlight="@android:color/black"
-            android:textColorLink="@android:color/background_dark"
+            android:textColor="@color/cardview_light_background"
+            android:textColorHighlight="@android:color/background_light"
+            android:textColorLink="@android:color/background_light"
             android:textCursorDrawable="@android:color/background_dark"
             tools:targetApi="lollipop" />
 
         <RadioButton
             android:id="@+id/radioButtonDriver"
-            android:layout_width="136dp"
-            android:layout_height="wrap_content"
-            android:background="@android:color/background_light"
-            android:buttonTint="@android:color/background_dark"
+            android:layout_width="135dp"
+            android:layout_height="30dp"
+            android:background="@android:color/black"
+            android:buttonTint="@android:color/background_light"
             android:text="@string/driver"
-            android:textColorHighlight="@android:color/black"
-            android:textColorLink="@android:color/background_dark"
+            android:textColor="@color/cardview_light_background"
+            android:textColorHighlight="@android:color/background_light"
+            android:textColorLink="@android:color/background_light"
             android:textCursorDrawable="@android:color/background_dark"
-            tools:targetApi="lollipop" />
+            tools:targetApi="lollipop"
+            tools:ignore="PrivateResource" />
 
     </RadioGroup>
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="357dp"
-        android:layout_height="203dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/draft" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

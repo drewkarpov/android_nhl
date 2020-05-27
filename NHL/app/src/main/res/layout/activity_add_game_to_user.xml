@@ -50,6 +50,7 @@
         <RadioButton
             android:id="@+id/radioButtonWin"
             android:layout_width="match_parent"
+            android:checked="true"
             android:layout_height="wrap_content"
             android:text="@string/won" />
 
