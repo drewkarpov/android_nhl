@@ -47,7 +47,7 @@ public class AddUserActivity extends AppCompatActivity {
 
         User user = new User(
                 editTextName.getText().toString(),
-                radioButton.getText().toString(),
+                radioButton.getText().toString().toLowerCase(),
                 editTextComment.getText().toString()
         );
         postUsers(user);

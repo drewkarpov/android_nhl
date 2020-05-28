@@ -59,7 +59,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UsersViewHolde
                 colorId = holder.itemView.getResources().getColor(android.R.color.holo_green_light);
                 break;
             default:
-                throw new IllegalStateException("Unexpected value: " + priority);
+                colorId = holder.itemView.getResources().getColor(android.R.color.holo_blue_bright);
+               // throw new IllegalStateException("Unexpected value: " + priority);
         }
         holder.textViewStatus.setBackgroundColor(colorId);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
