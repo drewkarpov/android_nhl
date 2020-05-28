@@ -52,7 +52,6 @@ public class AddUserActivity extends AppCompatActivity {
         );
         postUsers(user);
         Toast toast = Toast.makeText(getApplicationContext(), "игрок добавлен", Toast.LENGTH_LONG);
-        toast.getView().setBackgroundColor(R.color.colorPrimaryDark);
         toast.show();
         goToMainPage(view);
     }

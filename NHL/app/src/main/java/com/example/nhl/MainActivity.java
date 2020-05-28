@@ -89,11 +89,9 @@ public class MainActivity extends AppCompatActivity {
                             adapter = new UserAdapter(users);
                             recyclerViewUsers.setAdapter(adapter);
                             Toast toast = Toast.makeText(getApplicationContext(), "найдено " + users.size() + " пользователей", Toast.LENGTH_LONG);
-                            toast.getView().setBackgroundColor(R.color.colorPrimaryDark);
                             toast.show();
                         } else {
                             Toast toast = Toast.makeText(getApplicationContext(), "пользователи с таким никнеймом не найдены", Toast.LENGTH_LONG);
-                            toast.getView().setBackgroundColor(R.color.colorPrimaryDark);
                             toast.show();
                         }
                     }
