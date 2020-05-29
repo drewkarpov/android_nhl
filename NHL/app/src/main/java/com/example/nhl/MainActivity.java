@@ -4,10 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -15,6 +17,7 @@ import com.example.nhl.model.User;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -40,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
             adapter = new UserAdapter(userList);
             recyclerViewUsers.setAdapter(adapter);
         }
+
 
     }
 
@@ -91,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
                             Toast toast = Toast.makeText(getApplicationContext(), "найдено " + users.size() + " пользователей", Toast.LENGTH_LONG);
                             toast.show();
                         } else {
+                            openPopup(value);
                             Toast toast = Toast.makeText(getApplicationContext(), "пользователи с таким никнеймом не найдены", Toast.LENGTH_LONG);
                             toast.show();
                         }
@@ -102,6 +107,14 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
+
+    public void openPopup(String value ) {
+        Intent intent = new Intent(MainActivity.this, PopUpAddActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("value",value);
+        startActivity(intent);
+    }
+
 
     public void addUser(View view) {
         Intent intent = new Intent(this, AddUserActivity.class);

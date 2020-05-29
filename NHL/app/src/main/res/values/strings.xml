@@ -23,4 +23,5 @@
     <string name="wegoal">мы забили</string>
     <string name="usgoal">нам забили</string>
     <string name="add">Добавить</string>
+    <string name="addusertodb">Игрок не найден! \n Добавить игрока в базу?</string>
 </resources>

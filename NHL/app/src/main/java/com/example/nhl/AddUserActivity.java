@@ -23,14 +23,22 @@ public class AddUserActivity extends AppCompatActivity {
     private EditText editTextName;
     private EditText editTextComment;
     private RadioGroup radioGroupPriority;
+    private String nickname = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent intent = getIntent();
+        if (intent.getStringExtra("name") == null ){
+            nickname = "";
+        } else {
+            nickname = intent.getStringExtra("name");
+        }
         setContentView(R.layout.activity_add_user);
         editTextName = findViewById(R.id.editTextName);
         editTextComment = findViewById(R.id.editTextDescription);
         radioGroupPriority = findViewById(R.id.radioGroupPriority);
+        editTextName.setText(nickname);
 
     }
 

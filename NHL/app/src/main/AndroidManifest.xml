@@ -16,7 +16,11 @@
         android:usesCleartextTraffic="true"
         android:windowSoftInputMode="adjustNothing"
         tools:targetApi="n">
-        <activity android:name=".AddGameToUserActivity"></activity>
+        <activity android:name=".PopUpAddActivity"
+            android:theme="@style/AppTheme.CustomTheme">
+
+        </activity>
+        <activity android:name=".AddGameToUserActivity" />
         <activity android:name=".userGamesActivity" />
         <activity android:name=".ChangeUserActivity" />
         <activity android:name=".UserDataActivity" />
