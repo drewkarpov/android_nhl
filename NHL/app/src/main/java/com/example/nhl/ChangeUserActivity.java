@@ -67,7 +67,7 @@ public class ChangeUserActivity extends AppCompatActivity {
 
         User user = new User(
                 textName.getText().toString(),
-                radioButton.getText().toString(),
+                radioButton.getText().toString().toLowerCase(),
                 textComment.getText().toString()
         );
         changeDataUser(user);

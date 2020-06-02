@@ -30,7 +30,7 @@ public class UserDataActivity extends AppCompatActivity {
         textName.setText(intent.getStringExtra("name"));
         textId.setText(intent.getStringExtra("id"));
         textComment.setText(intent.getStringExtra("comment"));
-        status = intent.getStringExtra("status");
+        status = intent.getStringExtra("status").toLowerCase();
     }
 
     public void returnToMainPage(View view) {
