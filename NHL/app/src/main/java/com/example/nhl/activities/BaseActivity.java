@@ -1,4 +1,4 @@
-package com.example.nhl;
+package com.example.nhl.activities;
 
 import android.annotation.SuppressLint;
 import android.widget.Toast;

@@ -1,4 +1,4 @@
-package com.example.nhl;
+package com.example.nhl.network;
 
 import com.example.nhl.model.User;
 

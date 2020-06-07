@@ -8,7 +8,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/nhl"
         android:label="@string/app_name"
         android:roundIcon="@drawable/nhl"
         android:supportsRtl="true"
@@ -16,18 +16,38 @@
         android:usesCleartextTraffic="true"
         android:windowSoftInputMode="adjustNothing"
         tools:targetApi="n">
-        <activity android:name=".PopUpAddActivity"
-            android:theme="@style/AppTheme.CustomTheme">
+        <activity
+            android:name=".activities.PopUpAddActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.CustomTheme"
+            tools:ignore="LockedOrientationActivity">
 
         </activity>
-        <activity android:name=".AddGameToUserActivity" />
-        <activity android:name=".userGamesActivity" />
-        <activity android:name=".ChangeUserActivity" />
-        <activity android:name=".UserDataActivity" />
-        <activity android:name=".AddUserActivity" />
         <activity
-            android:name=".MainActivity"
-            android:windowSoftInputMode="adjustNothing">
+            android:name=".activities.AddGameToUserActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".activities.userGamesActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".activities.ChangeUserActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".activities.UserDataActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".activities.AddUserActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name="com.example.nhl.MainActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustNothing"
+            tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

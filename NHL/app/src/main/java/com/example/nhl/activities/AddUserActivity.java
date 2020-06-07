@@ -1,4 +1,4 @@
-package com.example.nhl;
+package com.example.nhl.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +12,9 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.example.nhl.MainActivity;
+import com.example.nhl.network.NetworkService;
+import com.example.nhl.R;
 import com.example.nhl.model.User;
 
 import retrofit2.Call;

@@ -1,4 +1,4 @@
-package com.example.nhl;
+package com.example.nhl.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +13,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.example.nhl.MainActivity;
+import com.example.nhl.network.NetworkService;
+import com.example.nhl.R;
 import com.example.nhl.model.User;
 
 import java.util.List;
@@ -30,6 +33,7 @@ public class ChangeUserActivity extends AppCompatActivity {
     private RadioButton radioButtonHard;
     private RadioButton radioButtonDriver;
     private Intent intentMainPage;
+    private  String status;
 
     private String id;
 
@@ -45,7 +49,7 @@ public class ChangeUserActivity extends AppCompatActivity {
         radioButtonDriver = findViewById(R.id.radioButtonDriver);
         intentMainPage = new Intent(this, MainActivity.class);
         Intent intent = getIntent();
-        String status = intent.getStringExtra("status");
+        status = intent.getStringExtra("status");
         String name = intent.getStringExtra("name");
         String comment = intent.getStringExtra("comment");
          id = intent.getStringExtra("id");
@@ -113,6 +117,7 @@ public class ChangeUserActivity extends AppCompatActivity {
 
     public void returnToMainPage(View view) {
         Intent intent = new Intent(this, UserDataActivity.class);
+        intent.putExtra("status", status);
         startActivity(intent);
     }
 }

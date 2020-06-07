@@ -4,15 +4,19 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.nhl.activities.AddUserActivity;
+import com.example.nhl.activities.PopUpAddActivity;
+import com.example.nhl.network.NetworkService;
 import com.example.nhl.model.User;
 
 import java.util.ArrayList;
@@ -29,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText textViewSearch;
     private UserAdapter adapter;
     private static List<User> userList = new ArrayList<>();
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,12 +43,16 @@ public class MainActivity extends AppCompatActivity {
         textViewSearch = findViewById(R.id.inputNickname);
         LinearLayoutManager manager = new LinearLayoutManager(this);
         recyclerViewUsers.setLayoutManager(manager);
-        recyclerViewUsers.setNestedScrollingEnabled(false);
+        swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
         if (userList.size() != 0) {
             adapter = new UserAdapter(userList);
             recyclerViewUsers.setAdapter(adapter);
         }
 
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            getUsers();
+            swipeRefreshLayout.setRefreshing(false);
+        });
 
     }
 
@@ -67,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(@NonNull Call<List<User>> call, @NonNull Response<List<User>> response) {
                         userList = response.body();
                         adapter = new UserAdapter(userList);
-                        adapter.setOnUserClickListener(position -> {
+                        adapter.setOnUserClickListener((int position) -> {
                         });
                         recyclerViewUsers.setAdapter(adapter);
                     }

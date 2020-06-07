@@ -8,11 +8,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.nhl.activities.UserDataActivity;
 import com.example.nhl.model.User;
 
 import java.util.List;
-
-import static com.example.nhl.UserDataActivity.EXTRA_POS;
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UsersViewHolder> {
 
@@ -67,7 +66,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UsersViewHolde
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), UserDataActivity.class);
-                intent.putExtra(EXTRA_POS, position);
                 intent.putExtra("id", id);
                 intent.putExtra("name",  user.getName());
                 intent.putExtra("comment",  user.getComment());

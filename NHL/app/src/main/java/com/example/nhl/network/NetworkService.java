@@ -1,4 +1,4 @@
-package com.example.nhl;
+package com.example.nhl.network;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

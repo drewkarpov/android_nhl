@@ -1,4 +1,4 @@
-package com.example.nhl;
+package com.example.nhl.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +10,9 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.nhl.MainActivity;
+import com.example.nhl.network.NetworkService;
+import com.example.nhl.R;
 import com.example.nhl.model.Score;
 
 import java.util.List;
@@ -23,6 +26,7 @@ public class userGamesActivity extends AppCompatActivity {
     private ArrayAdapter<Score> adapter;
     private ListView listView;
     private String id;
+    private String status;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +35,7 @@ public class userGamesActivity extends AppCompatActivity {
         listView = findViewById(R.id.listViewGames);
         Intent intent = getIntent();
         id = intent.getStringExtra("id");
+        status = intent.getStringExtra("status");
     }
 
 
@@ -69,6 +74,7 @@ public class userGamesActivity extends AppCompatActivity {
 
     public void returnGamePage(View view) {
         Intent intent = new Intent(this, UserDataActivity.class);
+        intent.putExtra("status", status);
         startActivity(intent);
     }
 

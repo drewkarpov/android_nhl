@@ -1,4 +1,4 @@
-package com.example.nhl;
+package com.example.nhl.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.TextView;
+
+import com.example.nhl.R;
+import com.example.nhl.activities.AddUserActivity;
 
 public class PopUpAddActivity extends AppCompatActivity {
     private String nickname;

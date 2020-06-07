@@ -42,6 +42,7 @@ dependencies {
     implementation "com.github.jkcclemens:khttp:0.1.0"
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.cardview:cardview:1.0.0'
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
     implementation 'com.squareup.okhttp3:okhttp:3.14.6'
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation 'com.loopj.android:android-async-http:1.4.9'

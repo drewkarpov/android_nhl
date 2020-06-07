@@ -1,23 +1,24 @@
-package com.example.nhl;
+package com.example.nhl.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import com.example.nhl.model.Score;
-import java.util.ArrayList;
-import java.util.List;
+
+import com.example.nhl.MainActivity;
+import com.example.nhl.R;
 
 
+@SuppressLint("Registered")
 public class UserDataActivity extends AppCompatActivity {
 
     private TextView textName;
     private TextView textId;
     private TextView textComment;
-    private static String status;
-
-    static final String EXTRA_POS = "my_item_position";
+    private  String status;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +51,7 @@ public class UserDataActivity extends AppCompatActivity {
     public void goGamesPage(View view) {
         Intent intent = new Intent(this, userGamesActivity.class);
         intent.putExtra("id", textId.getText());
+        intent.putExtra("status", status);
         startActivity(intent);
     }
 

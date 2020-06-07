@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fan"
-    tools:context=".UserDataActivity">
+    tools:context=".activities.UserDataActivity">
 
     <Button
         android:id="@+id/changeButton"
