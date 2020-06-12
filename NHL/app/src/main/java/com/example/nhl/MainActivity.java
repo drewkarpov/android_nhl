@@ -129,6 +129,11 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AddUserActivity.class);
         startActivity(intent);
     }
+
+    public void goVideo(View view) {
+        Intent intent = new Intent(this, VideoActivity.class);
+        startActivity(intent);
+    }
 }
 
 

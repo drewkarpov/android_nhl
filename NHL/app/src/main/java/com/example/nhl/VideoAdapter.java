@@ -1,50 +1,72 @@
 package com.example.nhl;
 
 import android.content.Context;
+import android.content.pm.ActivityInfo;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.MediaController;
+import android.widget.Toast;
 import android.widget.VideoView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.nhl.model.VideoItem;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHolder> {
+public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> {
 
-    private List<VideoItem> videoItems;
+    private ArrayList<VideoItem> videoItems;
     private Context context;
 
-
-    public VideoAdapter(List<VideoItem> videoItems, Context context) {
+    public VideoAdapter(ArrayList<VideoItem> videoItems, Context context) {
         this.videoItems = videoItems;
         this.context = context;
     }
 
     @NonNull
     @Override
-    public VideoViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.activity_video, viewGroup, false);
-        return new VideoViewHolder(view);
+    public VideoAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_video, parent, false);
+        return new ViewHolder(view);
     }
 
-
     @Override
-    public void onBindViewHolder(@NonNull VideoViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final VideoAdapter.ViewHolder holder, int position) {
         VideoItem videoItem = videoItems.get(position);
-        Picasso.get().load(videoItem.getPrewiewUrl()).into(holder.prewiewImage);
 
-        try{
+        Picasso.get().load(videoItem.getPrewiewUrl()).into(holder.previewImaegView);
+
+        try {
             String link = videoItem.getVideoUrl();
             MediaController mediaController = new MediaController(context);
             mediaController.setAnchorView(holder.videoView);
+
+
             Uri video = Uri.parse(link);
             holder.videoView.setMediaController(mediaController);
+            holder.videoView.setVideoURI(video);
+            holder.previewImaegView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    holder.previewImaegView.setVisibility(View.GONE);
+                    holder.videoView.start();
+                }
+            });
+
+            holder.videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+                    holder.previewImaegView.setVisibility(View.VISIBLE);
+                }
+            });
+        } catch (Exception e) {
+            Toast.makeText(context, "Error connection", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -53,16 +75,16 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
         return videoItems.size();
     }
 
-    public class VideoViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder{
 
-            VideoView videoView;
-            ImageView prewiewImage;
+        VideoView videoView;
+        ImageView previewImaegView;
 
-        public VideoViewHolder(@NonNull View itemView) {
-            super(itemView);
-            videoView = itemView.findViewById(R.id.videoView);
-            prewiewImage = itemView.findViewById(R.id.previewImage);
+        public ViewHolder(@NonNull View view) {
+            super(view);
+            videoView = view.findViewById(R.id.videoView);
+            previewImaegView = view.findViewById(R.id.previewImage);
         }
+
     }
 }
-

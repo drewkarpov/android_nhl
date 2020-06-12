@@ -7,22 +7,26 @@
     tools:context=".VideoActivity">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="370dp"
-        android:layout_height="158dp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <VideoView
+            android:id="@+id/videoView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:foregroundGravity="center" />
 
         <ImageView
             android:id="@+id/previewImage"
             android:layout_width="match_parent"
-            android:layout_height="160dp"
+            android:layout_height="match_parent"
             android:scaleType="centerCrop" />
 
-        <VideoView
-            android:id="@+id/videoView"
-            android:layout_width="372dp"
-            android:layout_height="157dp"
-            android:foregroundGravity="center" />
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
