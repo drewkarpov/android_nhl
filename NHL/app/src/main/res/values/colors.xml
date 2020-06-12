@@ -5,4 +5,11 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="red">#E10707</color>
     <color name="textsj">#05704E</color>
+    <color name="zeroplus">#2AD992</color>
+    <color name="zero">#18F8C1</color>
+    <color name="lowplus">#21B20E </color>
+    <color name="low">#34F51B</color>
+    <color name="hard">#F18C1C</color>
+    <color name="hardplus">#E0450A</color>
+    <color name="driver">#E10707</color>
 </resources>

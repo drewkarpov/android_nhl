@@ -24,7 +24,7 @@ public interface JSONUserApi {
      Call<List<User>> getUsers();
 
     @POST("/user/add")
-    Call<User> postUser(@Body User user);
+    Call<List<User>> postUser(@Body User user);
 
     @DELETE("/user/delete/{id}")
     Call<List<User>> deleteUser(@Path("id") String id);

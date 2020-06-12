@@ -12,17 +12,18 @@
         android:id="@+id/changeButton"
         android:layout_width="180dp"
         android:layout_height="35dp"
-        android:layout_marginTop="32dp"
         android:background="#0C0404"
         android:drawableTop="@android:color/black"
         android:onClick="changeUserData"
         android:shadowColor="@android:color/black"
         android:text="@string/change_user_data"
         android:textColor="@color/cardview_light_background"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroupStatus"
+        app:layout_constraintTop_toBottomOf="@+id/ratingBar2"
+        app:layout_constraintVertical_bias="0.227"
         tools:ignore="MissingConstraints,PrivateResource" />
 
     <Button
@@ -41,56 +42,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/changeButton"
         tools:ignore="MissingConstraints,PrivateResource" />
-
-    <RadioGroup
-        android:id="@+id/radioGroupStatus"
-        android:layout_width="139dp"
-        android:layout_height="138dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textChangeComment"
-        app:layout_constraintVertical_bias="0.145">
-
-        <RadioButton
-            android:id="@+id/radioButtonLow"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:buttonTint="@android:color/background_light"
-            android:gravity="center"
-            android:text="@string/low"
-            android:textColor="@color/cardview_light_background"
-            android:textColorHighlight="@android:color/background_light"
-            android:textColorLink="@android:color/background_light"
-            tools:targetApi="lollipop" />
-
-        <RadioButton
-            android:id="@+id/radioButtonHard"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:buttonTint="@android:color/background_light"
-            android:checked="true"
-            android:gravity="center"
-            android:text="@string/hard"
-            android:textColor="@color/cardview_light_background"
-            android:textColorHighlight="@android:color/background_light"
-            android:textColorLink="@android:color/background_light"
-            tools:targetApi="lollipop" />
-
-        <RadioButton
-            android:id="@+id/radioButtonDriver"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:buttonTint="@android:color/background_light"
-            android:gravity="center"
-            android:text="@string/driver"
-            android:textColor="@color/cardview_light_background"
-            android:textColorHighlight="@android:color/background_light"
-            android:textColorLink="@android:color/background_light"
-            tools:targetApi="lollipop" />
-
-    </RadioGroup>
 
     <Button
         android:id="@+id/backButton"
@@ -151,5 +102,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textChangeName"
         app:layout_constraintVertical_bias="0.023" />
+
+    <RatingBar
+        android:id="@+id/ratingBar2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:stepSize="1"
+        android:numStars="4"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textChangeComment"
+        app:layout_constraintVertical_bias="0.12" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

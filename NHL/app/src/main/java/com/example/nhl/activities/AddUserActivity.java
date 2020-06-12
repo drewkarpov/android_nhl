@@ -8,14 +8,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
+import android.widget.RatingBar;
 import android.widget.Toast;
 
 import com.example.nhl.MainActivity;
+import com.example.nhl.helpers.StatusGenerator;
 import com.example.nhl.network.NetworkService;
 import com.example.nhl.R;
 import com.example.nhl.model.User;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -25,14 +27,14 @@ public class AddUserActivity extends AppCompatActivity {
 
     private EditText editTextName;
     private EditText editTextComment;
-    private RadioGroup radioGroupPriority;
     private String nickname = "";
+    private RatingBar ratingBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
-        if (intent.getStringExtra("name") == null ){
+        if (intent.getStringExtra("name") == null) {
             nickname = "";
         } else {
             nickname = intent.getStringExtra("name");
@@ -40,7 +42,7 @@ public class AddUserActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_user);
         editTextName = findViewById(R.id.editTextName);
         editTextComment = findViewById(R.id.editTextDescription);
-        radioGroupPriority = findViewById(R.id.radioGroupPriority);
+        ratingBar = findViewById(R.id.ratingBar);
         editTextName.setText(nickname);
 
     }
@@ -53,12 +55,11 @@ public class AddUserActivity extends AppCompatActivity {
 
     @SuppressLint("ResourceAsColor")
     public void addUserToBd(View view) {
-        int radioButtonId = radioGroupPriority.getCheckedRadioButtonId();
-        RadioButton radioButton = findViewById(radioButtonId);
-
+        double rating = ratingBar.getRating();
+        String status = StatusGenerator.getStatusByRating(rating);
         User user = new User(
                 editTextName.getText().toString(),
-                radioButton.getText().toString().toLowerCase(),
+                status,
                 editTextComment.getText().toString()
         );
         postUsers(user);
@@ -72,13 +73,14 @@ public class AddUserActivity extends AppCompatActivity {
         NetworkService.getInstance()
                 .getJSONApi()
                 .postUser(user)
-                .enqueue(new Callback<User>() {
+                .enqueue(new Callback<List<User>>() {
                     @Override
-                    public void onResponse(@NonNull Call<User> call, @NonNull Response<User> response) {
+                    public void onResponse(@NonNull Call<List<User>> call, @NonNull Response<List<User>> response) {
+                        MainActivity.userList = response.body();
                     }
 
                     @Override
-                    public void onFailure(@NonNull Call<User> call, @NonNull Throwable t) {
+                    public void onFailure(@NonNull Call<List<User>> call, @NonNull Throwable t) {
                         t.printStackTrace();
                     }
                 });

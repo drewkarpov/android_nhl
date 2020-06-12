@@ -16,13 +16,12 @@
         android:usesCleartextTraffic="true"
         android:windowSoftInputMode="adjustNothing"
         tools:targetApi="n">
+        <activity android:name=".VideoActivity"></activity>
         <activity
             android:name=".activities.PopUpAddActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.CustomTheme"
-            tools:ignore="LockedOrientationActivity">
-
-        </activity>
+            tools:ignore="LockedOrientationActivity"></activity>
         <activity
             android:name=".activities.AddGameToUserActivity"
             android:screenOrientation="portrait"
@@ -44,7 +43,7 @@
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name="com.example.nhl.MainActivity"
+            android:name=".MainActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustNothing"
             tools:ignore="LockedOrientationActivity">

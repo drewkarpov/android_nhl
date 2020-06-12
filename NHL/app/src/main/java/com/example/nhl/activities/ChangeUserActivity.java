@@ -9,11 +9,13 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
 import com.example.nhl.MainActivity;
+import com.example.nhl.helpers.StatusGenerator;
 import com.example.nhl.network.NetworkService;
 import com.example.nhl.R;
 import com.example.nhl.model.User;
@@ -28,13 +30,9 @@ public class ChangeUserActivity extends AppCompatActivity {
 
     private EditText textName;
     private EditText textComment;
-    private RadioGroup radioGroupStatus;
-    private RadioButton radioButtonLow;
-    private RadioButton radioButtonHard;
-    private RadioButton radioButtonDriver;
     private Intent intentMainPage;
-    private  String status;
-
+    private String status;
+    private RatingBar ratingBar;
     private String id;
 
     @Override
@@ -43,35 +41,25 @@ public class ChangeUserActivity extends AppCompatActivity {
         setContentView(R.layout.activity_change_user);
         textName = findViewById(R.id.textChangeName);
         textComment = findViewById(R.id.textChangeComment);
-        radioGroupStatus = findViewById(R.id.radioGroupStatus);
-        radioButtonLow = findViewById(R.id.radioButtonLow);
-        radioButtonHard = findViewById(R.id.radioButtonHard);
-        radioButtonDriver = findViewById(R.id.radioButtonDriver);
+        ratingBar = findViewById(R.id.ratingBar2);
         intentMainPage = new Intent(this, MainActivity.class);
         Intent intent = getIntent();
         status = intent.getStringExtra("status");
         String name = intent.getStringExtra("name");
         String comment = intent.getStringExtra("comment");
-         id = intent.getStringExtra("id");
-        switch (status){
-            case "low": radioButtonLow.setChecked(true);
-            break;
-            case "hard": radioButtonHard.setChecked(true);
-            break;
-            case "driver": radioButtonDriver.setChecked(true);
-            break;
-        }
+        id = intent.getStringExtra("id");
+        ratingBar.setRating(StatusGenerator.getRatingByStatus(status));
         textName.setText(name, TextView.BufferType.EDITABLE);
         textComment.setText(comment, TextView.BufferType.EDITABLE);
     }
 
     public void changeUserData(View view) {
-        int radioButtonId = radioGroupStatus.getCheckedRadioButtonId();
-        RadioButton radioButton = findViewById(radioButtonId);
+        double rating = ratingBar.getRating();
+        String status = StatusGenerator.getStatusByRating(rating);
 
         User user = new User(
                 textName.getText().toString(),
-                radioButton.getText().toString().toLowerCase(),
+                status,
                 textComment.getText().toString()
         );
         changeDataUser(user);
@@ -80,7 +68,8 @@ public class ChangeUserActivity extends AppCompatActivity {
     public void deleteUser(View view) {
         deleteUserFromBd();
     }
-    public void deleteUserFromBd(){
+
+    public void deleteUserFromBd() {
         NetworkService.getInstance()
                 .getJSONApi()
                 .deleteUser(id)
@@ -88,6 +77,7 @@ public class ChangeUserActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(@NonNull Call<List<User>> call, @NonNull Response<List<User>> response) {
                         Toast.makeText(getApplicationContext(), "игрок удален", Toast.LENGTH_LONG).show();
+                        MainActivity.userList= response.body();
                         startActivity(intentMainPage);
                     }
 
@@ -97,14 +87,16 @@ public class ChangeUserActivity extends AppCompatActivity {
                     }
                 });
     }
-    public void changeDataUser(User user){
+
+    public void changeDataUser(User user) {
         NetworkService.getInstance()
                 .getJSONApi()
-                .changeUser(user,id)
+                .changeUser(user, id)
                 .enqueue(new Callback<List<User>>() {
                     @Override
                     public void onResponse(@NonNull Call<List<User>> call, @NonNull Response<List<User>> response) {
                         Toast.makeText(getApplicationContext(), "данные игрока изменены", Toast.LENGTH_LONG).show();
+                        MainActivity.userList= response.body();
                         startActivity(intentMainPage);
                     }
 

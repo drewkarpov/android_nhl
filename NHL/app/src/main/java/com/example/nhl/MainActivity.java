@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerViewUsers;
     private EditText textViewSearch;
     private UserAdapter adapter;
-    private static List<User> userList = new ArrayList<>();
+    public static List<User> userList = new ArrayList<>();
     private SwipeRefreshLayout swipeRefreshLayout;
 
     @Override

@@ -11,15 +11,16 @@
         android:id="@+id/buttonAdd"
         android:layout_width="180dp"
         android:layout_height="40dp"
-        android:layout_marginTop="112dp"
         android:background="@color/design_default_color_secondary_variant"
         android:onClick="addUserToBd"
         android:text="@string/add"
         android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroupPriority"
+        app:layout_constraintTop_toBottomOf="@+id/ratingBar"
+        app:layout_constraintVertical_bias="0.293"
         tools:ignore="MissingConstraints" />
 
     <Button
@@ -76,60 +77,18 @@
         app:layout_constraintVertical_bias="0.017"
         tools:ignore="PrivateResource" />
 
-    <RadioGroup
-        android:id="@+id/radioGroupPriority"
-        android:layout_width="110dp"
-        android:layout_height="101dp"
-        android:background="@android:color/black"
-        android:orientation="vertical"
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:stepSize="1"
+        android:numStars="4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextDescription"
-        app:layout_constraintVertical_bias="0.0">
-
-        <RadioButton
-            android:id="@+id/radioButtonLow"
-            android:layout_width="100dp"
-            android:layout_height="30dp"
-            android:background="@android:color/black"
-            android:buttonTint="@color/design_default_color_secondary_variant"
-            android:text="@string/low"
-            android:textColor="@color/cardview_light_background"
-            android:textColorHighlight="@android:color/background_light"
-            android:textColorLink="@color/design_default_color_secondary_variant"
-            android:textCursorDrawable="@android:color/background_dark"
-            tools:ignore="PrivateResource"
-            tools:targetApi="lollipop" />
-
-        <RadioButton
-            android:id="@+id/radioButtonHard"
-            android:layout_width="100dp"
-            android:layout_height="30dp"
-            android:buttonTint="@color/design_default_color_secondary_variant"
-            android:checked="true"
-            android:text="@string/hard"
-            android:textColor="@color/cardview_light_background"
-            android:textColorHighlight="@android:color/background_light"
-            android:textColorLink="@android:color/background_light"
-            android:textCursorDrawable="@android:color/background_dark"
-            tools:targetApi="lollipop" />
-
-        <RadioButton
-            android:id="@+id/radioButtonDriver"
-            android:layout_width="100dp"
-            android:layout_height="30dp"
-            android:background="@android:color/black"
-            android:buttonTint="@color/design_default_color_secondary_variant"
-            android:text="@string/driver"
-            android:textColor="@color/cardview_light_background"
-            android:textColorHighlight="@android:color/background_light"
-            android:textColorLink="@android:color/background_light"
-            android:textCursorDrawable="@android:color/background_dark"
-            tools:ignore="PrivateResource"
-            tools:targetApi="lollipop" />
-
-    </RadioGroup>
+        app:layout_constraintVertical_bias="0.121" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
