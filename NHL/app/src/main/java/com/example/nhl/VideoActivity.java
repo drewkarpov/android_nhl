@@ -5,13 +5,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
-import android.content.pm.ActivityInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.ProgressBar;
 import com.example.nhl.model.VideoItem;
+import com.example.nhl.storage.MediaStorage;
+
 import java.util.ArrayList;
 
 public class VideoActivity extends AppCompatActivity {
@@ -37,8 +38,6 @@ public class VideoActivity extends AppCompatActivity {
         recyclerView.setAdapter(videoAdapter);
         Content content = new Content();
         content.execute();
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-
     }
 
     @SuppressLint("StaticFieldLeak")
@@ -62,9 +61,8 @@ public class VideoActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... voids) {
             try {
-                String url = "http://89.223.88.248/video1.mp4";
-                String previewUrl = "http://89.223.88.248/draft.jpg";
-                videoItems.add(new VideoItem(url, previewUrl));
+                MediaStorage storage = new MediaStorage();
+                videoItems.addAll(storage.getVideoItems());
             } catch (Exception ex) {
                 ex.printStackTrace();
             }

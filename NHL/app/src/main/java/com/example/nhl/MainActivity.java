@@ -1,7 +1,9 @@
 package com.example.nhl;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -9,6 +11,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 
 import android.widget.EditText;
@@ -21,6 +24,7 @@ import com.example.nhl.model.User;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -34,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
     private UserAdapter adapter;
     public static List<User> userList = new ArrayList<>();
     private SwipeRefreshLayout swipeRefreshLayout;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

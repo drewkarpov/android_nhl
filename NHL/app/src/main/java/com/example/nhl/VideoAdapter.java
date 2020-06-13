@@ -1,14 +1,12 @@
 package com.example.nhl;
 
 import android.content.Context;
-import android.content.pm.ActivityInfo;
+import android.content.Intent;
 import android.media.MediaPlayer;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.MediaController;
 import android.widget.Toast;
 import android.widget.VideoView;
 import androidx.annotation.NonNull;
@@ -17,7 +15,6 @@ import com.example.nhl.model.VideoItem;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> {
 
@@ -43,19 +40,13 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
         Picasso.get().load(videoItem.getPrewiewUrl()).into(holder.previewImaegView);
 
         try {
-            String link = videoItem.getVideoUrl();
-            MediaController mediaController = new MediaController(context);
-            mediaController.setAnchorView(holder.videoView);
-
-
-            Uri video = Uri.parse(link);
-            holder.videoView.setMediaController(mediaController);
-            holder.videoView.setVideoURI(video);
             holder.previewImaegView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    holder.previewImaegView.setVisibility(View.GONE);
-                    holder.videoView.start();
+                    Intent intent = new Intent(view.getContext(), VideoWatchActivity.class);
+                    intent.putExtra("video",videoItem.getVideoUrl() );
+                    intent.putExtra("image",videoItem.getPrewiewUrl() );
+                    view.getContext().startActivity(intent);
                 }
             });
 

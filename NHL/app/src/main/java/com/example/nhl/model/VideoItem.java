@@ -4,10 +4,11 @@ public class VideoItem {
 
     private String videoUrl;
     private String prewiewUrl;
+    private final String host = "http://89.223.88.248/";
 
     public VideoItem(String videoUrl, String prewiewUrl) {
-        this.videoUrl = videoUrl;
-        this.prewiewUrl = prewiewUrl;
+        this.videoUrl = host + videoUrl;
+        this.prewiewUrl =host + prewiewUrl;
     }
 
     public String getVideoUrl() {
@@ -15,7 +16,7 @@ public class VideoItem {
     }
 
     public void setVideoUrl(String videoUrl) {
-        this.videoUrl = videoUrl;
+        this.videoUrl = host + videoUrl;
     }
 
     public String getPrewiewUrl() {
@@ -23,6 +24,6 @@ public class VideoItem {
     }
 
     public void setPrewiewUrl(String prewiewUrl) {
-        this.prewiewUrl = prewiewUrl;
+        this.prewiewUrl = host + prewiewUrl;
     }
 }

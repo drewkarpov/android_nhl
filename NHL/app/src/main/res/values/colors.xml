@@ -12,4 +12,5 @@
     <color name="hard">#F18C1C</color>
     <color name="hardplus">#E0450A</color>
     <color name="driver">#E10707</color>
+    <color name="black">#000000</color>
 </resources>

@@ -6,13 +6,14 @@
     android:layout_height="match_parent"
     android:background="@drawable/revers_shark"
     android:screenOrientation="portrait"
+    android:theme="@style/Widget.AppCompat.ActionBar"
     android:windowSoftInputMode="adjustNothing"
     tools:context=".MainActivity">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipeRefreshLayout"
-        android:layout_width="0dp"
-        android:layout_height="513dp"
+        android:layout_width="match_parent"
+        android:layout_height="498dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,7 +22,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewUsers"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="526dp"
             tools:ignore="UnknownId" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
@@ -29,17 +30,19 @@
 
     <Button
         android:id="@+id/searchButton"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
         android:layout_marginTop="20dp"
         android:background="@color/design_default_color_secondary_variant"
         android:onClick="showUsers"
         android:text="@string/searchButtonText"
         android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputNickname" />
+        app:layout_constraintTop_toBottomOf="@+id/inputNickname"
+        app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/buttonAddNote"
@@ -59,20 +62,19 @@
 
     <EditText
         android:id="@+id/inputNickname"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
         android:ems="10"
         android:hint="@string/nicknameInput"
         android:inputType="textPersonName"
         android:textColor="@color/cardview_light_background"
         android:textColorHint="@android:color/background_light"
-        app:layout_constraintBottom_toBottomOf="@+id/scrollView3"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.079"
         tools:ignore="PrivateResource" />
 
     <ScrollView
@@ -88,14 +90,16 @@
             android:orientation="vertical" />
     </ScrollView>
 
-    <Button
-        android:id="@+id/buttonVideo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="goVideo"
 
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="87dp"
+        android:layout_height="47dp"
+        android:onClick="goVideo"
+        app:layout_constraintBottom_toTopOf="@+id/swipeRefreshLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.048"
+        app:srcCompat="@drawable/camera" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -24,6 +24,7 @@
     <string name="usgoal">нам забили</string>
     <string name="add">Добавить</string>
     <string name="addusertodb">Игрок не найден! \n Добавить игрока в базу?</string>
+    <string name="media">Медиа</string>
 
     <string-array name="status">
         <item>zero</item>
