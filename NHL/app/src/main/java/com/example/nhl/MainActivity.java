@@ -5,26 +5,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
-
-import android.view.animation.AnimationUtils;
-import android.widget.EditText;
-import android.widget.Toast;
-
+import android.view.inputmethod.EditorInfo;
+import android.widget.SearchView;
 import com.example.nhl.activities.AddUserActivity;
 import com.example.nhl.activities.PopUpAddActivity;
 import com.example.nhl.network.NetworkService;
 import com.example.nhl.model.User;
 import com.google.gson.JsonObject;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -33,11 +27,11 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerViewUsers;
-    private EditText textViewSearch;
     private UserAdapter adapter;
     public static List<User> userList = new ArrayList<>();
     private SwipeRefreshLayout swipeRefreshLayout;
     private JsonObject statistic;
+    private SearchView searchView;
 
 
     @Override
@@ -47,30 +41,41 @@ public class MainActivity extends AppCompatActivity {
         Stat stat = new Stat();
         stat.execute();
         recyclerViewUsers = findViewById(R.id.recyclerViewUsers);
-        textViewSearch = findViewById(R.id.inputNickname);
+        searchView = findViewById(R.id.SearchView);
         LinearLayoutManager manager = new LinearLayoutManager(this);
         recyclerViewUsers.setLayoutManager(manager);
         swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
-        if (userList.size() != 0) {
-            adapter = new UserAdapter(userList);
-            recyclerViewUsers.setAdapter(adapter);
-        }
-
-        swipeRefreshLayout.setOnRefreshListener(() -> {
+        searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+        adapter = new UserAdapter(userSearch());
+        recyclerViewUsers.setAdapter(adapter);
+            swipeRefreshLayout.setOnRefreshListener(() -> {
             getUsers();
             swipeRefreshLayout.setRefreshing(false);
         });
 
     }
 
-    public void showUsers(View view) {
-        String value = textViewSearch.getText().toString();
-        if (value.isEmpty()) {
-            getUsers();
-        } else {
-            searchUsers(value);
-        }
+
+    private List<User> userSearch() {
+        List<User> list = new ArrayList<>();
+        list.add(new User("kek", "pek", "dedwed"));
+        list.add(new User("cdc", "pek", "dedwed"));
+        list.add(new User("vvvv", "pek", "dedwed"));
+        list.add(new User("ddd", "pek", "dedwed"));
+        return list;
     }
+
 
     public void getUsers() {
         NetworkService.getInstance()
@@ -112,35 +117,6 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
-    public void searchUsers(String value) {
-
-        NetworkService.getInstance()
-                .getJSONApi()
-                .searchUsers(value)
-                .enqueue(new Callback<List<User>>() {
-                    @SuppressLint("ResourceAsColor")
-                    @Override
-                    public void onResponse(@NonNull Call<List<User>> call, @NonNull Response<List<User>> response) {
-                        List<User> users = response.body();
-                        if (users.size() != 0) {
-                            adapter = new UserAdapter(users);
-                            recyclerViewUsers.setAdapter(adapter);
-                            Toast toast = Toast.makeText(getApplicationContext(), "найдено " + users.size() + " пользователей", Toast.LENGTH_LONG);
-                            toast.show();
-                        } else {
-                            openPopup(value);
-                            Toast toast = Toast.makeText(getApplicationContext(), "пользователи с таким никнеймом не найдены", Toast.LENGTH_LONG);
-                            toast.show();
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(@NonNull Call<List<User>> call, @NonNull Throwable t) {
-                        t.printStackTrace();
-                    }
-                });
-    }
-
     public void openPopup(String value) {
         Intent intent = new Intent(MainActivity.this, PopUpAddActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -151,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void addUser(View view) {
         Intent intent = new Intent(this, AddUserActivity.class);
-        intent.putExtra("name", textViewSearch.getText().toString());
+        intent.putExtra("name", searchView.getQuery().toString());
         startActivity(intent);
     }
 
@@ -175,6 +151,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... voids) {
             getStatistic();
+            getUsers();
             return null;
         }
 
@@ -183,6 +160,10 @@ public class MainActivity extends AppCompatActivity {
             super.onPreExecute();
         }
     }
+
+
+
+
 }
 
 

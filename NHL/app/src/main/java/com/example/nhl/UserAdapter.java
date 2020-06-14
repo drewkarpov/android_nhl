@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,15 +15,19 @@ import com.example.nhl.activities.UserDataActivity;
 import com.example.nhl.helpers.ColorGenerator;
 import com.example.nhl.model.User;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UsersViewHolder> {
+public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UsersViewHolder> implements Filterable {
 
     private List<User> users;
+    private List<User> usersAll;
     public onUserClickListener onUserClickListener;
 
     public UserAdapter(List<User> users) {
         this.users = users;
+        usersAll = new ArrayList<>();
+        usersAll.addAll(users);
     }
 
     interface onUserClickListener {
@@ -47,7 +53,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UsersViewHolde
         holder.textViewStatus.setText(user.getStatus());
         String id = String.format("%s", user.getId());
         holder.textViewId.setText(String.format("%s", user.getId()));
-        if (!user.getComment().isEmpty()) {
+        if (!user.getComment().trim().equals("")) {
             holder.textViewCommentFlag.setText("*");
         }
         int colorId;
@@ -87,5 +93,37 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UsersViewHolde
 
         }
     }
+
+    @Override
+    public Filter getFilter() {
+        return exampleFilter;
+    }
+
+    private Filter exampleFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<User> filteredList = new ArrayList<>();
+            if (constraint == "") {
+                filteredList.addAll(usersAll);
+            } else {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+                for (User item : usersAll) {
+                    if (item.getName().toLowerCase().contains(filterPattern)) {
+                        filteredList.add(item);
+                    }
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            users.clear();
+            users.addAll((List) results.values);
+            notifyDataSetChanged();
+        }
+    };
 }
 

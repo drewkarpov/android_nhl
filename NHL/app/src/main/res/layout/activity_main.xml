@@ -25,12 +25,11 @@
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipeRefreshLayout"
         android:layout_width="match_parent"
-        android:layout_height="498dp"
+        android:layout_height="580dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.873">
+        app:layout_constraintTop_toBottomOf="@+id/SearchView">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewUsers"
@@ -39,22 +38,6 @@
             tools:ignore="UnknownId" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-
-    <Button
-        android:id="@+id/searchButton"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="20dp"
-        android:background="@color/design_default_color_secondary_variant"
-        android:onClick="showUsers"
-        android:text="@string/searchButtonText"
-        android:textColor="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputNickname"
-        app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/buttonAddNote"
@@ -71,23 +54,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.953" />
-
-    <EditText
-        android:id="@+id/inputNickname"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
-        android:ems="10"
-        android:hint="@string/nicknameInput"
-        android:inputType="textPersonName"
-        android:textColor="@color/cardview_light_background"
-        android:textColorHint="@android:color/background_light"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.088"
-        tools:ignore="PrivateResource" />
 
     <ScrollView
         android:id="@+id/scrollView3"
@@ -108,10 +74,20 @@
         android:layout_width="60dp"
         android:layout_height="40dp"
         android:onClick="goVideo"
-        app:layout_constraintBottom_toTopOf="@+id/swipeRefreshLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.048"
+        app:layout_constraintVertical_bias="0.011"
         app:srcCompat="@drawable/camera" />
+
+    <SearchView
+        android:id="@+id/SearchView"
+        android:layout_width="280dp"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageView2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.011" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
