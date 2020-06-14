@@ -17,17 +17,18 @@
         android:windowSoftInputMode="adjustNothing"
         tools:targetApi="n">
         <activity
+            android:name=".StatisticActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="fullSensor" />
+        <activity
             android:name=".VideoActivity"
+            android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"
-            android:configChanges="orientation|keyboardHidden">
-
-        </activity>
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".VideoWatchActivity"
             android:configChanges="orientation|screenSize"
-            android:rotation="180.0"
-             />
+            android:rotation="180.0" />
         <activity
             android:name=".activities.PopUpAddActivity"
             android:screenOrientation="portrait"

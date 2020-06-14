@@ -1,6 +1,7 @@
 package com.example.nhl.network;
 
 import com.example.nhl.model.User;
+import com.google.gson.JsonObject;
 
 import java.util.List;
 
@@ -28,6 +29,9 @@ public interface JSONUserApi {
 
     @DELETE("/user/delete/{id}")
     Call<List<User>> deleteUser(@Path("id") String id);
+
+    @GET("/users/statistic")
+    Call<JsonObject> usersStatistic();
 
 
 
