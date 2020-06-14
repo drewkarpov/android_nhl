@@ -26,14 +26,14 @@ public class StatisticActivity extends AppCompatActivity {
         int zero = Integer.parseInt(intent.getStringExtra("zero"));
         int low = Integer.parseInt(intent.getStringExtra("low"));
         int hard = Integer.parseInt(intent.getStringExtra("hard"));
-        int red = Integer.parseInt(intent.getStringExtra("driver"));
+        int driver = Integer.parseInt(intent.getStringExtra("driver"));
 
         int[] color = {Color.rgb(100, 221, 23), Color.rgb(255, 30, 30), Color.rgb(40, 200, 200)
                 , Color.rgb(255, 136, 0)
         };
 
         NoOfEmp.add(new PieEntry(low, 0));
-        NoOfEmp.add(new PieEntry(red, 1));
+        NoOfEmp.add(new PieEntry(driver - 100, 1));
         NoOfEmp.add(new PieEntry(zero, 2));
         NoOfEmp.add(new PieEntry(hard, 3));
 
