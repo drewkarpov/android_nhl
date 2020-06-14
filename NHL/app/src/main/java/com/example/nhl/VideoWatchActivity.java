@@ -52,11 +52,6 @@ public class VideoWatchActivity extends AppCompatActivity {
             videoView.requestFocus();
             videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                 public void onPrepared(MediaPlayer mp) {
-                    try {
-                        Thread.sleep(4000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
                     pDialog.dismiss();
                     mp.start();
                 }
