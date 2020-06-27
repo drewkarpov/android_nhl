@@ -146,6 +146,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void goPhoto(View view) {
+        Intent intent = new Intent(this, PhotoActivity.class);
+        startActivity(intent);
+    }
+
     private class Stat extends AsyncTask<Void, Void, Void> {
 
         @Override
