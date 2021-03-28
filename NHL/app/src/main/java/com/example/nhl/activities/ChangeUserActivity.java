@@ -55,11 +55,14 @@ public class ChangeUserActivity extends AppCompatActivity {
     public void changeUserData(View view) {
         double rating = ratingBar.getRating();
         String status = StatusGenerator.getStatusByRating(rating);
-
+        String comment = " ";
+        if (!textComment.getText().toString().equals("")){
+            comment = textComment.getText().toString();
+        }
         User user = new User(
                 textName.getText().toString(),
                 status,
-                textComment.getText().toString(),
+                comment,
                 StatusGenerator.getRating(status)
         );
         changeDataUser(user);
@@ -94,12 +97,16 @@ public class ChangeUserActivity extends AppCompatActivity {
     public void changeDataUser(User user) {
         NetworkService.getInstance()
                 .getJSONApi()
-                .changeUser(user, id)
+                .changeUser(user.mapToDto(), id)
                 .enqueue(new Callback<JsonObject>() {
                     @Override
                     public void onResponse(@NonNull Call<JsonObject> call, @NonNull Response<JsonObject> response) {
-                        Toast.makeText(getApplicationContext(), "данные игрока изменены", Toast.LENGTH_LONG).show();
-                        startActivity(intentMainPage);
+                        if (response.isSuccessful()) {
+                            Toast.makeText(getApplicationContext(), "данные игрока изменены", Toast.LENGTH_LONG).show();
+                            startActivity(intentMainPage);
+                        } else {
+                            Toast.makeText(getApplicationContext(), "ошибка сервера "+ response.message(), Toast.LENGTH_LONG).show();
+                        }
                     }
 
                     @Override

@@ -59,10 +59,14 @@ public class AddUserActivity extends AppCompatActivity {
     public void addUserToBd(View view) {
         double rating = ratingBar.getRating();
         String status = StatusGenerator.getStatusByRating(rating);
+        String comment = " ";
+        if (!editTextComment.getText().toString().equals("")){
+            comment = editTextComment.getText().toString();
+        }
         User user = new User(
                 editTextName.getText().toString(),
                 status,
-                editTextComment.getText().toString(),
+                comment,
                 StatusGenerator.getRating(status)
         );
         postUsers(user);

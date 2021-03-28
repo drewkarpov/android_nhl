@@ -16,7 +16,6 @@ import com.example.nhl.R;
 public class UserDataActivity extends AppCompatActivity {
 
     private TextView textName;
-    private TextView textId;
     private TextView textComment;
     private  String status;
     private String id;
@@ -26,7 +25,6 @@ public class UserDataActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_data);
         textName = findViewById(R.id.textName);
-        textId = findViewById(R.id.textId);
         textComment = findViewById(R.id.textComment);
         Intent intent = getIntent();
         textName.setText(intent.getStringExtra("name"));

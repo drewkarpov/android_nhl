@@ -16,7 +16,7 @@ import retrofit2.http.Path;
 
 public interface JSONUserApi {
     @PUT("/player/{id}/change")
-     Call<JsonObject> changeUser(@Body User user, @Path("id") String id);
+     Call<JsonObject> changeUser(@Body UserDto user, @Path("id") String id);
 
     @GET("/players")
      Call<List<User>> getUsers();
@@ -27,7 +27,7 @@ public interface JSONUserApi {
     @DELETE("/player/{id}/delete")
     Call<JsonObject> deleteUser(@Path("id") String id);
 
-    @GET("/users/statistic")
+    @GET("/players/statistic")
     Call<JsonObject> usersStatistic();
 
 }
