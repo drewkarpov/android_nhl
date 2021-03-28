@@ -57,23 +57,13 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
-        adapter = new UserAdapter(userSearch());
+        adapter = new UserAdapter(new ArrayList<>());
         recyclerViewUsers.setAdapter(adapter);
             swipeRefreshLayout.setOnRefreshListener(() -> {
             getUsers();
             swipeRefreshLayout.setRefreshing(false);
         });
 
-    }
-
-
-    private List<User> userSearch() {
-        List<User> list = new ArrayList<>();
-        list.add(new User("kek", "pek", "dedwed"));
-        list.add(new User("cdc", "pek", "dedwed"));
-        list.add(new User("vvvv", "pek", "dedwed"));
-        list.add(new User("ddd", "pek", "dedwed"));
-        return list;
     }
 
 

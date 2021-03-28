@@ -13,16 +13,26 @@
         android:layout_height="wrap_content">
 
 
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="49dp"
+            android:layout_height="42dp"
+            android:background="@android:color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/shrk_rev_22" />
+
         <TextView
             android:id="@+id/textViewName"
-            android:layout_width="215dp"
+            android:layout_width="201dp"
             android:layout_height="42dp"
             android:background="@android:color/black"
             android:gravity="center"
             android:textColor="@android:color/white"
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textViewId"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
 
@@ -39,20 +49,8 @@
             tools:ignore="MissingConstraints" />
 
         <TextView
-            android:id="@+id/textViewId"
-            android:layout_width="46dp"
-            android:layout_height="42dp"
-            android:gravity="center"
-            android:background="@android:color/black"
-            android:textColor="@android:color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <TextView
             android:id="@+id/textViewCommentId"
-            android:layout_width="51dp"
+            android:layout_width="61dp"
             android:layout_height="42dp"
             android:background="@android:color/black"
             android:gravity="center"

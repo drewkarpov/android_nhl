@@ -19,6 +19,7 @@ public class UserDataActivity extends AppCompatActivity {
     private TextView textId;
     private TextView textComment;
     private  String status;
+    private String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +30,7 @@ public class UserDataActivity extends AppCompatActivity {
         textComment = findViewById(R.id.textComment);
         Intent intent = getIntent();
         textName.setText(intent.getStringExtra("name"));
-        textId.setText(intent.getStringExtra("id"));
+        id = intent.getStringExtra("id");
         textComment.setText(intent.getStringExtra("comment"));
         status = intent.getStringExtra("status").toLowerCase();
     }
@@ -41,7 +42,7 @@ public class UserDataActivity extends AppCompatActivity {
 
     public void changeUserData(View view) {
         Intent intent = new Intent(this, ChangeUserActivity.class);
-        intent.putExtra("id", textId.getText());
+        intent.putExtra("id", id);
         intent.putExtra("name", textName.getText());
         intent.putExtra("comment", textComment.getText());
         intent.putExtra("status", status);
@@ -50,7 +51,7 @@ public class UserDataActivity extends AppCompatActivity {
 
     public void goGamesPage(View view) {
         Intent intent = new Intent(this, userGamesActivity.class);
-        intent.putExtra("id", textId.getText());
+        intent.putExtra("id",id);
         intent.putExtra("status", status);
         startActivity(intent);
     }

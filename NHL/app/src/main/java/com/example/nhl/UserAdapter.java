@@ -52,7 +52,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UsersViewHolde
         holder.textViewName.setText(user.getName());
         holder.textViewStatus.setText(user.getStatus());
         String id = String.format("%s", user.getId());
-        holder.textViewId.setText(String.format("%s", user.getId()));
         if (!user.getComment().trim().equals("")) {
             holder.textViewCommentFlag.setText("*");
         }
@@ -88,7 +87,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UsersViewHolde
             super(itemView);
             textViewName = itemView.findViewById(R.id.textViewName);
             textViewStatus = itemView.findViewById(R.id.textViewStatus);
-            textViewId = itemView.findViewById(R.id.textViewId);
             textViewCommentFlag = itemView.findViewById(R.id.textViewCommentId);
 
         }

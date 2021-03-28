@@ -7,8 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,6 +17,7 @@ import com.example.nhl.helpers.StatusGenerator;
 import com.example.nhl.network.NetworkService;
 import com.example.nhl.R;
 import com.example.nhl.model.User;
+import com.google.gson.JsonObject;
 
 import java.util.List;
 
@@ -60,7 +59,8 @@ public class ChangeUserActivity extends AppCompatActivity {
         User user = new User(
                 textName.getText().toString(),
                 status,
-                textComment.getText().toString()
+                textComment.getText().toString(),
+                StatusGenerator.getRating(status)
         );
         changeDataUser(user);
     }
@@ -73,16 +73,19 @@ public class ChangeUserActivity extends AppCompatActivity {
         NetworkService.getInstance()
                 .getJSONApi()
                 .deleteUser(id)
-                .enqueue(new Callback<List<User>>() {
+                .enqueue(new Callback<JsonObject>() {
                     @Override
-                    public void onResponse(@NonNull Call<List<User>> call, @NonNull Response<List<User>> response) {
-                        Toast.makeText(getApplicationContext(), "игрок удален", Toast.LENGTH_LONG).show();
-                        MainActivity.userList= response.body();
-                        startActivity(intentMainPage);
+                    public void onResponse(@NonNull Call<JsonObject> call, @NonNull Response<JsonObject> response) {
+                        if (response.isSuccessful()){
+                            Toast.makeText(getApplicationContext(), "игрок удален", Toast.LENGTH_LONG).show();
+                            startActivity(intentMainPage);
+                        } else {
+                            Toast.makeText(getApplicationContext(), "ошибка сервера "+ response.message(), Toast.LENGTH_LONG).show();
+                        }
                     }
 
                     @Override
-                    public void onFailure(@NonNull Call<List<User>> call, @NonNull Throwable t) {
+                    public void onFailure(@NonNull Call<JsonObject> call, @NonNull Throwable t) {
                         t.printStackTrace();
                     }
                 });
@@ -92,16 +95,15 @@ public class ChangeUserActivity extends AppCompatActivity {
         NetworkService.getInstance()
                 .getJSONApi()
                 .changeUser(user, id)
-                .enqueue(new Callback<List<User>>() {
+                .enqueue(new Callback<JsonObject>() {
                     @Override
-                    public void onResponse(@NonNull Call<List<User>> call, @NonNull Response<List<User>> response) {
+                    public void onResponse(@NonNull Call<JsonObject> call, @NonNull Response<JsonObject> response) {
                         Toast.makeText(getApplicationContext(), "данные игрока изменены", Toast.LENGTH_LONG).show();
-                        MainActivity.userList= response.body();
                         startActivity(intentMainPage);
                     }
 
                     @Override
-                    public void onFailure(@NonNull Call<List<User>> call, @NonNull Throwable t) {
+                    public void onFailure(@NonNull Call<JsonObject> call, @NonNull Throwable t) {
                         t.printStackTrace();
                     }
                 });

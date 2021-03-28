@@ -13,9 +13,11 @@ import android.widget.Toast;
 
 import com.example.nhl.MainActivity;
 import com.example.nhl.helpers.StatusGenerator;
+import com.example.nhl.model.UserDto;
 import com.example.nhl.network.NetworkService;
 import com.example.nhl.R;
 import com.example.nhl.model.User;
+import com.google.gson.JsonObject;
 
 import java.util.List;
 
@@ -60,7 +62,8 @@ public class AddUserActivity extends AppCompatActivity {
         User user = new User(
                 editTextName.getText().toString(),
                 status,
-                editTextComment.getText().toString()
+                editTextComment.getText().toString(),
+                StatusGenerator.getRating(status)
         );
         postUsers(user);
         Toast toast = Toast.makeText(getApplicationContext(), "игрок добавлен", Toast.LENGTH_LONG);
@@ -72,15 +75,14 @@ public class AddUserActivity extends AppCompatActivity {
 
         NetworkService.getInstance()
                 .getJSONApi()
-                .postUser(user)
-                .enqueue(new Callback<List<User>>() {
+                .postUser(user.mapToDto())
+                .enqueue(new Callback<JsonObject>() {
                     @Override
-                    public void onResponse(@NonNull Call<List<User>> call, @NonNull Response<List<User>> response) {
-                        MainActivity.userList = response.body();
+                    public void onResponse(@NonNull Call<JsonObject> call, @NonNull Response<JsonObject> response) {
                     }
 
                     @Override
-                    public void onFailure(@NonNull Call<List<User>> call, @NonNull Throwable t) {
+                    public void onFailure(@NonNull Call<JsonObject> call, @NonNull Throwable t) {
                         t.printStackTrace();
                     }
                 });

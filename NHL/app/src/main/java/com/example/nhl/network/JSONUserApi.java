@@ -1,6 +1,7 @@
 package com.example.nhl.network;
 
 import com.example.nhl.model.User;
+import com.example.nhl.model.UserDto;
 import com.google.gson.JsonObject;
 
 import java.util.List;
@@ -12,28 +13,22 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
-import retrofit2.http.Query;
 
 public interface JSONUserApi {
-    @PUT("/user/change/{id}")
-     Call<List<User>> changeUser(@Body User user, @Path("id") String id);
+    @PUT("/player/{id}/change")
+     Call<JsonObject> changeUser(@Body User user, @Path("id") String id);
 
-    @GET("/users")
-     Call<List<User>> searchUsers(@Query("value")  String value);
-
-    @GET("/users/")
+    @GET("/players")
      Call<List<User>> getUsers();
 
-    @POST("/user/add")
-    Call<List<User>> postUser(@Body User user);
+    @POST("/add/player")
+    Call<JsonObject> postUser(@Body UserDto user);
 
-    @DELETE("/user/delete/{id}")
-    Call<List<User>> deleteUser(@Path("id") String id);
+    @DELETE("/player/{id}/delete")
+    Call<JsonObject> deleteUser(@Path("id") String id);
 
     @GET("/users/statistic")
     Call<JsonObject> usersStatistic();
-
-
 
 }
 

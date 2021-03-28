@@ -3,10 +3,8 @@ package com.example.nhl.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class User {
-    @SerializedName("_id")
-    @Expose
-    private String id;
+public class UserDto {
+
     @SerializedName("name")
     @Expose
     private String name;
@@ -20,23 +18,11 @@ public class User {
     @Expose
     private int priority;
 
-    public User(String name, String status, String comment, int priority) {
+    public UserDto(String name, String status, String comment, int priority) {
         this.name = name;
         this.status = status;
         this.comment = comment;
         this.priority = priority;
-    }
-
-    public UserDto mapToDto() {
-        return new UserDto(this.name, this.status, this.comment, this.priority);
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getName() {

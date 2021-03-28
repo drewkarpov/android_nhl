@@ -35,4 +35,22 @@ public class StatusGenerator {
         }
         return rating;
     }
+
+    public static int getRating(String status) {
+        int priority;
+        switch (status) {
+            case "low":
+                priority = 3;
+                break;
+            case "hard":
+                priority = 2;
+                break;
+            case "driver":
+                priority = 1;
+                break;
+            default:
+                priority = 4;
+        }
+        return priority;
+    }
 }
