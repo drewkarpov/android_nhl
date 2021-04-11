@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.nhl.MainActivity;
 import com.example.nhl.R;
 
 

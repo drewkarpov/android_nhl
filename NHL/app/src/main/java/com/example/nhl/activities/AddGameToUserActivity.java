@@ -13,13 +13,10 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.example.nhl.MainActivity;
 import com.example.nhl.model.GameDto;
 import com.example.nhl.network.NetworkService;
 import com.example.nhl.R;
 import com.example.nhl.model.Game;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;

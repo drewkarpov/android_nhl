@@ -1,4 +1,4 @@
-package com.example.nhl;
+package com.example.nhl.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,8 +12,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.SearchView;
-import com.example.nhl.activities.AddUserActivity;
-import com.example.nhl.activities.PopUpAddActivity;
+
+import com.example.nhl.R;
+import com.example.nhl.adapters.UserAdapter;
 import com.example.nhl.network.NetworkService;
 import com.example.nhl.model.User;
 import com.google.gson.JsonObject;
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Stat stat = new Stat();
+        PlayerAsyncTask stat = new PlayerAsyncTask();
         stat.execute();
         recyclerViewUsers = findViewById(R.id.recyclerViewUsers);
         searchView = findViewById(R.id.SearchView);
@@ -121,11 +122,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void goVideo(View view) {
-        Intent intent = new Intent(this, VideoActivity.class);
-        startActivity(intent);
-    }
-
     public void goStatistic(View view) {
 
         Intent intent = new Intent(this, StatisticActivity.class);
@@ -136,12 +132,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void goPhoto(View view) {
-        Intent intent = new Intent(this, PhotoActivity.class);
-        startActivity(intent);
-    }
-
-    private class Stat extends AsyncTask<Void, Void, Void> {
+    private class PlayerAsyncTask extends AsyncTask<Void, Void, Void> {
 
         @Override
         protected Void doInBackground(Void... voids) {

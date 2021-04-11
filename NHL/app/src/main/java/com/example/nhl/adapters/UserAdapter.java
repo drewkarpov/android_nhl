@@ -1,4 +1,4 @@
-package com.example.nhl;
+package com.example.nhl.adapters;
 
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.nhl.R;
 import com.example.nhl.activities.UserDataActivity;
 import com.example.nhl.helpers.ColorGenerator;
 import com.example.nhl.model.User;
@@ -30,7 +31,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UsersViewHolde
         usersAll.addAll(users);
     }
 
-    interface onUserClickListener {
+    public interface onUserClickListener {
         void onNoteClick(int position);
     }
 

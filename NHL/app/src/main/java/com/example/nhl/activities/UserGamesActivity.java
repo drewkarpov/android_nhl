@@ -12,7 +12,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.nhl.MainActivity;
 import com.example.nhl.network.NetworkService;
 import com.example.nhl.R;
 import com.example.nhl.model.Game;

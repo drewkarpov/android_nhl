@@ -11,15 +11,11 @@ import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
-import com.example.nhl.MainActivity;
 import com.example.nhl.helpers.StatusGenerator;
-import com.example.nhl.model.UserDto;
 import com.example.nhl.network.NetworkService;
 import com.example.nhl.R;
 import com.example.nhl.model.User;
 import com.google.gson.JsonObject;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
