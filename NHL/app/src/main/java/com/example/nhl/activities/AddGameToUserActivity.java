@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.NumberPicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -24,12 +25,11 @@ import retrofit2.Response;
 
 public class AddGameToUserActivity extends AppCompatActivity {
 
-    private EditText textMy;
-    private EditText textUs;
-    private EditText textPlayer;
     private RadioGroup wonLoseGroup;
     private String id;
     private CheckBox overtimeCheckbox;
+    private NumberPicker numberPicker;
+    private NumberPicker numberPickerTwo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,17 +37,41 @@ public class AddGameToUserActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_game_to_user);
         Intent intent = getIntent();
         id = intent.getStringExtra("id");
-        textMy = findViewById(R.id.textMyScore);
-        textUs = findViewById(R.id.textOpponentScore);
         wonLoseGroup = findViewById(R.id.radioGroupWeWon);
         overtimeCheckbox = findViewById(R.id.checkBoxOvertime);
+
+        numberPicker = findViewById(R.id.numberPicker);
+        numberPickerTwo = findViewById(R.id.numberPickerTwo);
+
+        if (numberPicker != null) {
+            numberPicker.setValue(0);
+            numberPicker.setMinValue(0);
+            numberPicker.setMaxValue(20);
+            numberPicker.setWrapSelectorWheel(true);
+            numberPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+                public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+                    numberPicker.setTag(newVal);
+                }
+            });
+        }
+        if (numberPickerTwo != null) {
+            numberPickerTwo.setValue(0);
+            numberPickerTwo.setMinValue(0);
+            numberPickerTwo.setMaxValue(20);
+            numberPickerTwo.setWrapSelectorWheel(true);
+            numberPickerTwo.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+                public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+                    numberPickerTwo.setTag(newVal);
+                }
+            });
+        }
     }
 
     @SuppressLint("ResourceAsColor")
     public void addGame(View view) {
         int radioButtonId = wonLoseGroup.getCheckedRadioButtonId();
         RadioButton radioButton = findViewById(radioButtonId);
-        String result = textMy.getText().toString() + ":" + textUs.getText().toString();
+        String result = String.format("%d:%d", numberPicker.getValue(), numberPickerTwo.getValue());
         boolean win = true;
         if (radioButton.getText().equals("Проиграли")) {
             win = false;
@@ -67,9 +91,8 @@ public class AddGameToUserActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(@NonNull Call<Game> call, @NonNull Response<Game> response) {
 
-                        if (response.isSuccessful()){
+                        if (response.isSuccessful()) {
                             Toast toast = Toast.makeText(getApplicationContext(), "игра добавлена", Toast.LENGTH_LONG);
-                            toast.getView().setBackgroundColor(R.color.colorPrimaryDark);
                             toast.show();
                             goToMainPage();
                         }

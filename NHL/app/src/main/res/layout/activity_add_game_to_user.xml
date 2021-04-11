@@ -7,57 +7,51 @@
     android:background="@drawable/shrk_rev_22"
     tools:context=".activities.AddGameToUserActivity">
 
-    <EditText
-        android:id="@+id/textMyScore"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="112dp"
-        android:layout_marginLeft="112dp"
-        android:drawableTop="@android:color/black"
-        android:ems="10"
-        android:gravity="center"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.236" />
-
-    <EditText
-        android:id="@+id/textOpponentScore"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:ems="10"
-        android:gravity="center"
-        android:inputType="textPersonName"
-        android:drawableTop="@android:color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <NumberPicker
+        android:id="@+id/numberPickerTwo"
+        android:layout_width="110dp"
+        android:layout_height="85dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        android:theme="@style/NumberPickerText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.407"
-        app:layout_constraintStart_toEndOf="@+id/textMyScore"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.236" />
+        app:layout_constraintHorizontal_bias="0.777"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewUs" />
+
+    <NumberPicker
+        android:id="@+id/numberPicker"
+        android:layout_width="110dp"
+        android:layout_height="85dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        android:theme="@style/NumberPickerText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.17"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewWe" />
 
     <RadioGroup
         android:id="@+id/radioGroupWeWon"
-        android:layout_width="180dp"
-        android:layout_height="62dp"
+        android:layout_width="162dp"
+        android:layout_height="76dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.441"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textOpponentScore"
-        app:layout_constraintVertical_bias="0.058">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.499">
 
         <RadioButton
             android:id="@+id/radioButtonWin"
-            android:layout_width="match_parent"
-            android:checked="true"
+            android:layout_width="157dp"
             android:layout_height="wrap_content"
+            android:checked="true"
             android:text="@string/won" />
 
         <RadioButton
             android:id="@+id/radioButtonLose"
-            android:layout_width="match_parent"
+            android:layout_width="157dp"
             android:layout_height="wrap_content"
             android:text="@string/lose" />
     </RadioGroup>
@@ -66,36 +60,34 @@
         android:id="@+id/textViewWe"
         android:layout_width="115dp"
         android:layout_height="30dp"
-        android:text="@string/wegoal"
+        android:layout_marginTop="128dp"
         android:drawableTop="@android:color/black"
         android:gravity="center"
+        android:text="@string/wegoal"
         android:textColor="@color/cardview_light_background"
-        app:layout_constraintBottom_toTopOf="@+id/textMyScore"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.287"
+        app:layout_constraintHorizontal_bias="0.165"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textViewUs"
         android:layout_width="115dp"
         android:layout_height="30dp"
-        android:text="@string/usgoal"
+        android:layout_marginTop="128dp"
         android:drawableTop="@android:color/black"
-        android:textColor="@color/cardview_light_background"
         android:gravity="center"
-        app:layout_constraintBottom_toTopOf="@+id/textOpponentScore"
+        android:text="@string/usgoal"
+        android:textColor="@color/cardview_light_background"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.726"
+        app:layout_constraintHorizontal_bias="0.777"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/buttonAdd"
-        android:layout_width="180dp"
-        android:layout_height="30dp"
+        android:layout_width="190dp"
+        android:layout_height="66dp"
         android:background="#0C0404"
         android:drawableTop="@android:color/black"
         android:onClick="addGame"
@@ -104,18 +96,19 @@
         android:textColor="@color/cardview_light_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.447"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkBoxOvertime"
-        app:layout_constraintVertical_bias="0.125" />
+        app:layout_constraintVertical_bias="0.15" />
 
     <CheckBox
         android:id="@+id/checkBoxOvertime"
-        android:layout_width="178dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="185dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="20dp"
         android:text="Овертайм"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.455"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroupWeWon" />
 </androidx.constraintlayout.widget.ConstraintLayout>
