@@ -3,6 +3,8 @@ package com.example.nhl.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class User {
     @SerializedName("_id")
     @Expose
@@ -19,6 +21,16 @@ public class User {
     @SerializedName("priority")
     @Expose
     private int priority;
+
+    public List<Game> getGames() {
+        return games;
+    }
+
+    public void setGames(List<Game> games) {
+        this.games = games;
+    }
+
+    private List<Game> games;
 
     public User(String name, String status, String comment, int priority) {
         this.name = name;

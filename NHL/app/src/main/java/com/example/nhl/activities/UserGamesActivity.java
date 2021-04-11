@@ -5,15 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.nhl.MainActivity;
 import com.example.nhl.network.NetworkService;
 import com.example.nhl.R;
-import com.example.nhl.model.Score;
+import com.example.nhl.model.Game;
 
 import java.util.List;
 
@@ -21,9 +23,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class userGamesActivity extends AppCompatActivity {
+@SuppressLint("Registered")
+public class UserGamesActivity extends AppCompatActivity {
 
-    private ArrayAdapter<Score> adapter;
+    private ArrayAdapter<Game> adapter;
     private ListView listView;
     private String id;
     private String status;
@@ -36,6 +39,8 @@ public class userGamesActivity extends AppCompatActivity {
         Intent intent = getIntent();
         id = intent.getStringExtra("id");
         status = intent.getStringExtra("status");
+        GamesAsyncTask task = new GamesAsyncTask();
+        task.execute();
     }
 
 
@@ -43,18 +48,22 @@ public class userGamesActivity extends AppCompatActivity {
         NetworkService.getInstance()
                 .getJSONScoreApi()
                 .getScoresById(id)
-                .enqueue(new Callback<List<Score>>() {
+                .enqueue(new Callback<List<Game>>() {
                     @SuppressLint("ShowToast")
                     @Override
-                    public void onResponse(@NonNull Call<List<Score>> call, @NonNull Response<List<Score>> response) {
-                        List<Score> scores = response.body();
-                        assert scores != null;
-                        adapter = new ArrayAdapter<>(getApplicationContext(), R.layout.my_game_card, scores);
-                        listView.setAdapter(adapter);
+                    public void onResponse(@NonNull Call<List<Game>> call, @NonNull Response<List<Game>> response) {
+                        List<Game> scores = response.body();
+                        if (scores != null && scores.size() != 0){
+                            adapter = new ArrayAdapter<>(getApplicationContext(), R.layout.my_game_card, scores);
+                            listView.setAdapter(adapter);
+                        }else {
+                            Toast toast = Toast.makeText(getApplicationContext(), "список игр пуст", Toast.LENGTH_LONG);
+                            toast.show();
+                        }
                     }
 
                     @Override
-                    public void onFailure(@NonNull Call<List<Score>> call, @NonNull Throwable t) {
+                    public void onFailure(@NonNull Call<List<Game>> call, @NonNull Throwable t) {
                         t.printStackTrace();
                     }
                 });
@@ -80,5 +89,19 @@ public class userGamesActivity extends AppCompatActivity {
 
     public void reNewClick(View view) {
         getScores();
+    }
+
+    private class GamesAsyncTask extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            getScores();
+            return null;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
     }
 }

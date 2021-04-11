@@ -7,15 +7,17 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.nhl.MainActivity;
+import com.example.nhl.model.GameDto;
 import com.example.nhl.network.NetworkService;
 import com.example.nhl.R;
-import com.example.nhl.model.Score;
+import com.example.nhl.model.Game;
 
 import java.util.List;
 
@@ -29,58 +31,62 @@ public class AddGameToUserActivity extends AppCompatActivity {
     private EditText textUs;
     private EditText textPlayer;
     private RadioGroup wonLoseGroup;
-    private int id;
+    private String id;
+    private CheckBox overtimeCheckbox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_game_to_user);
-        Intent intent  = getIntent();
-        id = Integer.parseInt(intent.getStringExtra("id"));
+        Intent intent = getIntent();
+        id = intent.getStringExtra("id");
         textMy = findViewById(R.id.textMyScore);
         textUs = findViewById(R.id.textOpponentScore);
-        textPlayer = findViewById(R.id.editTextPlayer);
         wonLoseGroup = findViewById(R.id.radioGroupWeWon);
+        overtimeCheckbox = findViewById(R.id.checkBoxOvertime);
     }
 
     @SuppressLint("ResourceAsColor")
     public void addGame(View view) {
         int radioButtonId = wonLoseGroup.getCheckedRadioButtonId();
         RadioButton radioButton = findViewById(radioButtonId);
+        String result = textMy.getText().toString() + ":" + textUs.getText().toString();
         boolean win = true;
-        if (radioButton.getText().equals("Проиграли")){
+        if (radioButton.getText().equals("Проиграли")) {
             win = false;
         }
-        Score score = new Score(
-                textMy.getText().toString() + ":"+textUs.getText().toString(),textPlayer.getText().toString(), win
-        );
-        postScores(score);
-        goToMainPage(view);
+        boolean overtime = overtimeCheckbox.isChecked();
+        GameDto game = new GameDto(result, overtime, win);
+        postScores(game);
     }
 
-    public void postScores(Score score) {
+    public void postScores(GameDto game) {
 
         NetworkService.getInstance()
                 .getJSONScoreApi()
-                .setScore(id,score)
-                .enqueue(new Callback<List<Score>>() {
+                .setScore(id, game)
+                .enqueue(new Callback<Game>() {
                     @SuppressLint("ResourceAsColor")
                     @Override
-                    public void onResponse(@NonNull Call<List<Score>> call, @NonNull Response<List<Score>> response) {
-                        List<Score> list = response.body();
-                        Toast toast = Toast.makeText(getApplicationContext(), "игра добавлена", Toast.LENGTH_LONG);
-                        toast.getView().setBackgroundColor(R.color.colorPrimaryDark);
-                        toast.show();
+                    public void onResponse(@NonNull Call<Game> call, @NonNull Response<Game> response) {
+
+                        if (response.isSuccessful()){
+                            Toast toast = Toast.makeText(getApplicationContext(), "игра добавлена", Toast.LENGTH_LONG);
+                            toast.getView().setBackgroundColor(R.color.colorPrimaryDark);
+                            toast.show();
+                            goToMainPage();
+                        }
+
                     }
 
                     @Override
-                    public void onFailure(@NonNull Call<List<Score>> call, @NonNull Throwable t) {
+                    public void onFailure(@NonNull Call<Game> call, @NonNull Throwable t) {
                         t.printStackTrace();
                     }
                 });
     }
 
-    public void goToMainPage(View view) {
+    public void goToMainPage() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }

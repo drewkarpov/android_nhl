@@ -48,10 +48,11 @@ public class UserDataActivity extends AppCompatActivity {
     }
 
     public void goGamesPage(View view) {
-        Intent intent = new Intent(this, userGamesActivity.class);
+        Intent intent = new Intent(this, UserGamesActivity.class);
         intent.putExtra("id",id);
         intent.putExtra("status", status);
         startActivity(intent);
     }
+
 
 }

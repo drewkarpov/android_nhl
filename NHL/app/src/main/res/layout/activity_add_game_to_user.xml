@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/shrk_rev_22"
     tools:context=".activities.AddGameToUserActivity">
 
     <EditText
@@ -68,7 +69,7 @@
         android:text="@string/wegoal"
         android:drawableTop="@android:color/black"
         android:gravity="center"
-        android:textColor="@android:color/black"
+        android:textColor="@color/cardview_light_background"
         app:layout_constraintBottom_toTopOf="@+id/textMyScore"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.287"
@@ -82,7 +83,7 @@
         android:layout_height="30dp"
         android:text="@string/usgoal"
         android:drawableTop="@android:color/black"
-        android:textColor="@android:color/black"
+        android:textColor="@color/cardview_light_background"
         android:gravity="center"
         app:layout_constraintBottom_toTopOf="@+id/textOpponentScore"
         app:layout_constraintEnd_toEndOf="parent"
@@ -103,20 +104,18 @@
         android:textColor="@color/cardview_light_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroupWeWon"
-        app:layout_constraintVertical_bias="0.09" />
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxOvertime"
+        app:layout_constraintVertical_bias="0.125" />
 
-    <EditText
-        android:id="@+id/editTextPlayer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <CheckBox
+        android:id="@+id/checkBoxOvertime"
+        android:layout_width="178dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="24dp"
+        android:text="Овертайм"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.069" />
+        app:layout_constraintTop_toBottomOf="@+id/radioGroupWeWon" />
 </androidx.constraintlayout.widget.ConstraintLayout>

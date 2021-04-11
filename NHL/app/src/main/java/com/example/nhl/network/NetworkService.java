@@ -26,7 +26,7 @@ public class NetworkService {
         return mRetrofit.create(JSONUserApi.class);
     }
 
-    public JSONScoreApi getJSONScoreApi(){
-        return  mRetrofit.create(JSONScoreApi.class);
+    public JSONGamesApi getJSONScoreApi(){
+        return  mRetrofit.create(JSONGamesApi.class);
     }
 }

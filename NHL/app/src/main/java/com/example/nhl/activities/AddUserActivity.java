@@ -93,5 +93,9 @@ public class AddUserActivity extends AppCompatActivity {
     }
 
 
+    public void goToAddGamePage(View view) {
+        Intent intent = new Intent(this, AddGameToUserActivity.class);
+        startActivity(intent);
+    }
 }
 
